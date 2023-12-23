@@ -1,0 +1,9 @@
+.form {
+  &.form-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    margin: 65px 0;
+  }
+}
