@@ -1,6 +1,8 @@
-{{#> Card className='card-modal'}}
-  {{> Title level='2' text='Вход' }}
-  {{#> Form className='form-modal'}}
+{{#> Card cardClassName='card-modal'}}
+  {{#> Title level='2'}}
+    Вход
+  {{/Title}}
+  {{#> Form formClassName='form-modal'}}
     {{#each (loginInputs)}}
       {{> Input className='input-modal' }}
     {{/each}}
