@@ -1,0 +1,11 @@
+.avatar {
+  &.avatar-user-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 47px;
+    height: 47px;
+    border-radius: 50px;
+    background-color: $color-middle-gray;
+  }
+}
