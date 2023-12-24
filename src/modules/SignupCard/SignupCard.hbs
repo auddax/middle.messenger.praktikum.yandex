@@ -1,0 +1,12 @@
+{{#> Card cardClassName='card-modal'}}
+  {{#> Title level='2'}}
+    Регистрация
+  {{/Title}}
+  {{#> Form formClassName='form-modal'}}
+    {{#each (signupInputs)}}
+      {{> Input className='input-modal' }}
+    {{/each}}
+  {{/Form}}
+  {{> Button type='primary' label='Зарегистрироваться' }}
+  {{> Button type='link' label='Войти' }}
+{{/Card}}
