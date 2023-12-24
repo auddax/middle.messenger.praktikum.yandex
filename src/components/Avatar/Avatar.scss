@@ -1,11 +1,19 @@
 .avatar {
-  &.avatar-user-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  background-color: $color-middle-gray;
+  font-weight: 300;
+
+  &.avatar-card-user {
     width: 47px;
     height: 47px;
-    border-radius: 50px;
-    background-color: $color-middle-gray;
+  }
+  
+  &.avatar-card-profile {
+    font-size: 3rem;
+    width: 130px;
+    height: 130px;
   }
 }

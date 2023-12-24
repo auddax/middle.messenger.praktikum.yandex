@@ -1,5 +1,8 @@
 .form-row {
+
   .input {
+    box-sizing: border-box;
+
     &.input-modal {
       width: 250px;
       height: 40px;
