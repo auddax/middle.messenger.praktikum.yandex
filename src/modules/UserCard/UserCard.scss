@@ -1,0 +1,36 @@
+.card-user {
+  padding: 12px 0;
+  border-bottom: 1px solid $color-middle-gray;
+  
+  &:hover {
+    cursor: pointer;
+  }
+
+  .row {
+    .col {
+      &:first-child {
+        justify-content: center;
+      }
+    }
+  }
+
+  .title {
+    margin: 0 0 4px 0;
+  }
+
+  .avatar-card-user {
+    margin: 0 10px 0 0;
+  }
+
+  .card-user__message {
+    font-weight: 500;
+    font-size: 0.75rem;
+    color: $color-dark-gray;
+  }
+
+  .card-user__date-time {
+    font-size: 0.5rem;
+    font-weight: 500;
+    color: $color-dark-gray
+  }
+}
