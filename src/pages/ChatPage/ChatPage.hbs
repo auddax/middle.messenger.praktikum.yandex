@@ -1,0 +1,16 @@
+{{#> Page className='page-chat'}}
+  {{#> Row}}
+    {{#> Col colClassName='left-col'}}
+      {{#> Button type='link'}}
+       Профиль
+      {{/Button}}
+      {{> Input label='Поиск' className='page-chat__search' }}
+      {{#each (userCards)}}
+        {{> UserCard }}
+      {{/each}}
+    {{/Col}}
+    {{#> Col colClassName='right-col'}}
+      <span class="page-chat__start-message">Выберите чат чтобы отправить сообщение</span>
+    {{/Col}}
+  {{/Row}}
+{{/Page}}

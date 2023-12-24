@@ -3,7 +3,7 @@
 
   &.button-primary {
     border-radius: 30px;
-    border: 1.5px solid $color-green;
+    border: none;
     background-color: $color-green;
     color: $color-white;
     font-family: $font-primary;
@@ -15,10 +15,30 @@
   
     &:hover {
       cursor: pointer;
-      opacity: 0.6;
+      opacity: $hover-opacity;
       transition: all $transition-time;
     }
   }
+
+  &.button-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50px;
+    border: none;
+    background-color: $color-green;
+    color: $color-white;
+    transition: all $transition-time;
+
+    &:hover {
+      cursor: pointer;
+      opacity: $hover-opacity;
+      transition: all $transition-time;
+    }
+  }
+
   &.button-link {
     border: none;
     background-color: transparent;
