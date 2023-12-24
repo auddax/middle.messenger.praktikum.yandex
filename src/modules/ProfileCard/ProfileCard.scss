@@ -1,0 +1,19 @@
+.card-profile {
+
+  .avatar-card-profile {
+    margin: 0 auto 20px;
+  }
+
+  .title_3 {
+    text-align: center;
+    margin: 0 0 60px;
+  }
+
+  .card-profile__controls {
+    margin: 60px auto 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+}
