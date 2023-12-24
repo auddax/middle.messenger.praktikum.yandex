@@ -4,21 +4,21 @@ export { default as ProfileEditCard } from './ProfileEditCard.hbs?raw';
 
 Handlebars.registerHelper('profileEditItems', () => [
   {
-    label: 'Почта', type: 'email',
+    label: 'Почта', htmlType: 'email',
   },
   {
-    label: 'Логин', type: 'text',
+    label: 'Логин', htmlType: 'text',
   },
   {
-    label: 'Имя', type: 'text',
+    label: 'Имя', htmlType: 'text',
   },
   {
-    label: 'Фамилия', type: 'text',
+    label: 'Фамилия', htmlType: 'text',
   },
   {
-    label: 'Имя в чате', type: 'text',
+    label: 'Имя в чате', htmlType: 'text',
   },
   {
-    label: 'Телефон', type: 'number',
+    label: 'Телефон', htmlType: 'number',
   },
 ]);

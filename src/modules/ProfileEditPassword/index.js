@@ -4,21 +4,12 @@ export { default as ProfileEditPassword } from './ProfileEditPassword.hbs?raw';
 
 Handlebars.registerHelper('profileEditPassword', () => [
   {
-    label: 'Почта', type: 'email',
+    label: 'Старый пароль', htmlType: 'password',
   },
   {
-    label: 'Логин', type: 'text',
+    label: 'Новый пароль', htmlType: 'password',
   },
   {
-    label: 'Имя', type: 'text',
-  },
-  {
-    label: 'Фамилия', type: 'text',
-  },
-  {
-    label: 'Имя в чате', type: 'text',
-  },
-  {
-    label: 'Телефон', type: 'number',
+    label: 'Повторите новый пароль', htmlType: 'password',
   },
 ]);
