@@ -1,0 +1,17 @@
+{{#> Card cardClassName='card-profile'}}
+  {{> Avatar userInitials='ИИ' avatarType='card-profile' }}
+  {{#> Title level='3'}}
+    Иван
+  {{/Title}}
+  {{#each (profileItems)}}
+    {{> ProfileItem }}
+  {{/each}}
+  <div class="card-profile__controls">
+    {{#> Button type='primary'}}
+      Изменить данные
+    {{/Button}}
+    {{#> Button type='primary'}}
+      Изменить пароль
+    {{/Button}}
+  </div>
+{{/Card}}
