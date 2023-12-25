@@ -1,12 +1,15 @@
 .message {
+  font-weight: 500;
+  font-size: 0.75rem;
+  padding: 12px;
+
   &.message_in {
     background-color: $color-light-gray;
     border-radius: 0 15px 15px 15px;
   }
 
   &.message_out {
-    background-color: $color-green;
-    opacity: $hover-opacity;
+    background-color: rgba(49, 218, 230, 0.15);
     border-radius: 15px 15px 0 15px;
   }
 }
