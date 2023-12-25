@@ -2,6 +2,14 @@
 
   .avatar-card-profile {
     margin: 0 auto 20px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .input-avatar {
+    display: none;
   }
 
   .title_3 {
