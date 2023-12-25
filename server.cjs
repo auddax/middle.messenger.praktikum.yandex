@@ -13,5 +13,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Messenger app listening on port http://localhost:${PORT}/`);
+  console.log(`Messenger App listening on port http://localhost:${PORT}/`);
 });
