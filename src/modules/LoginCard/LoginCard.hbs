@@ -2,14 +2,16 @@
   {{#> Title level='2'}}
     Вход
   {{/Title}}
-  {{#> Form formClassName='form-modal'}}
-    {{#each (loginInputs)}}
-      {{> Input className='input-modal' }}
-    {{/each}}
+  {{#> Form }}
+    <div class="card-modal__inputs">
+      {{#each (loginInputs)}}
+        {{> Input className='input-modal' }}
+      {{/each}}
+    </div>
+    {{#> Button type='primary' page='chatPage'}}
+      Войти
+    {{/Button}}
   {{/Form}}
-  {{#> Button type='primary' page='chatPage'}}
-    Войти
-  {{/Button}}
   {{#> Button type='link' page='signupPage'}}
     Создать аккаунт
   {{/Button}}
