@@ -31,7 +31,7 @@ const navigate = (page) => {
   container.innerHTML = Handlebars.compile(source)(context);
 };
 
-document.addEventListener('DOMContentLoaded', () => navigate('chatPage'));
+document.addEventListener('DOMContentLoaded', () => navigate('loginPage'));
 document.addEventListener('click', (e) => {
   const page = e.target.getAttribute('page');
   if (page) {
