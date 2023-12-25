@@ -1,0 +1,12 @@
+.message {
+  &.message_in {
+    background-color: $color-light-gray;
+    border-radius: 0 15px 15px 15px;
+  }
+
+  &.message_out {
+    background-color: $color-green;
+    opacity: $hover-opacity;
+    border-radius: 15px 15px 0 15px;
+  }
+}
