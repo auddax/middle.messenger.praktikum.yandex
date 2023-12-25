@@ -12,48 +12,59 @@
         width: 30%;
         background-color: $color-light-gray;
         padding: 20px 10px 0;
-        overflow-y: scroll;
         
-        .button-link {
-          font-weight: 500;
-          font-size: 0.75rem;
-          color: $color-dark-gray; 
-          text-decoration: none;
-          margin: 0 0 0 auto;
-        }
+        .page-chat__chat-controls {
+          padding: 0 0 12px;
+          border-bottom: 1px solid $color-middle-gray;
 
-        .page-chat__search {
-          &.input {
-            height: 32px;
-            text-align: center;
-            margin: 24px 0 14px;
-            width: 100%;
-            border-radius: 30px;
-            background-color: $color-middle-gray;
-            border: none;
-          }
-        
-          &:focus::placeholder {
-            color: transparent;
-            transition: all $transition-time;
-          }
-      
-          &::placeholder {
-            font-size: 1rem;
-            font-family: $font-primary;
-            color: $color-gray;
-            text-align: center;
+          .button-link {
+            font-weight: 500;
+            font-size: 0.75rem;
+            color: $color-dark-gray; 
+            text-decoration: none;
+            margin: 0 0 24px auto;
           }
         }
 
-        .form-row + .card-user {
-          border-top: 1px solid $color-middle-gray;
+        .page-chat__users {
+          overflow-y: scroll;
         }
       }
       &.right-col {
         width: 75%;
-        align-items: center;
-        justify-content: center;
+        justify-content: space-between;
+        padding: 20px;
+
+        .page-chat__user-info {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 30px 0 10px;
+          border-bottom: 1px solid $color-middle-gray;
+        }
+
+        .page-chat__messages {
+          overflow-y: scroll;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          gap: 20px;
+          height: 100%;
+          padding: 0 0 30px;
+        }
+
+        .page-chat__message-controls {
+          align-items: center;
+          display: flex;
+          justify-content: space-between;
+          gap: 10px;
+          border-top: 1px solid $color-middle-gray;
+          padding: 10px 0 0;
+          
+          .form-row {
+            width: 100%;
+          }
+        }
 
         .page-chat__start-message {
           font-weight: 500;
@@ -61,6 +72,29 @@
           color: $color-dark-gray;        
         }
       }
+    }
+  }
+
+  .page-chat__input {
+    &.input {
+      height: 32px;
+      text-align: center;
+      width: 100%;
+      border-radius: 30px;
+      background-color: $color-middle-gray;
+      border: none;
+    }
+  
+    &:focus::placeholder {
+      color: transparent;
+      transition: all $transition-time;
+    }
+
+    &::placeholder {
+      font-size: 1rem;
+      font-family: $font-primary;
+      color: $color-gray;
+      text-align: center;
     }
   }
 }
