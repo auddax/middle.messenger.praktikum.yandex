@@ -11,6 +11,8 @@ const pages = {
   notFoundPage: [Pages.NotFoundPage],
   chatPage: [Pages.ChatPage],
   profilePage: [Pages.ProfilePage],
+  profileEditPage: [Pages.ProfileEditPage],
+  profileEditPasswordPage: [Pages.ProfileEditPasswordPage],
 };
 
 Object.entries(Components).forEach(([name, component]) => {
