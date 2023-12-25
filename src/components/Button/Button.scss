@@ -31,6 +31,10 @@
     color: $color-white;
     transition: all $transition-time;
 
+    svg {
+      pointer-events: none;
+    }
+
     &:hover {
       cursor: pointer;
       opacity: $hover-opacity;
