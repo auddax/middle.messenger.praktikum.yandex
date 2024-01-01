@@ -1,0 +1,21 @@
+{{#> Card cardClassName='card-profile-edit'}}
+  {{#> Form}}
+    <label for="profileEditAvatar">
+      {{> Avatar userInitials='ИИ' avatarType='card-profile' }}
+    </label>
+    <input type="file" id="profileEditAvatar" name="avatar" class="input-avatar">
+  {{/Form}}
+  {{#> Title level='3'}}
+    Иван
+  {{/Title}}
+  {{#> Form}}
+    {{#each (profileEditItems)}}
+      {{> ProfileEditItem }}
+    {{/each}}
+    <div class="card-profile__controls">
+      {{#> Button type='primary' page="profilePage"}}
+        Сохранить
+      {{/Button}}
+    </div>
+  {{/Form}}
+{{/Card}}

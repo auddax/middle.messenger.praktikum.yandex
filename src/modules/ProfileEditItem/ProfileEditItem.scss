@@ -1,0 +1,17 @@
+.profile-edit-item__row {
+  justify-content: space-between;
+  align-items: center;
+  height: 32px;
+  width: 510px;
+  border-bottom: 1px solid $color-middle-gray;
+
+  .profile-edit-item__left-col {
+    width: 100%;
+    color: $color-dark-gray;
+
+    .profile-edit-item__input {
+      width: 100%;
+      border: none;
+    }
+  }
+}

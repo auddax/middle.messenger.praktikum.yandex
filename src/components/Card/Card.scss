@@ -1,0 +1,13 @@
+.card {
+  &.card-modal {
+    display: flex;
+    flex-direction: column;
+    color: $color-dark-blue;
+    background-color: $color-light-gray;
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px 5px rgba(170, 170, 170, 0.25);
+    align-items: center;
+    width: 340px;
+    padding: 60px 0;
+  }
+}

@@ -1,0 +1,7 @@
+<div  class="avatar avatar-{{ avatarType }}">
+  {{#if path }}
+   <img src="{{ path }}" alt="{{ avatarAltText }}" />
+  {{^}}
+    {{ userInitials }}
+  {{/if}}
+</div>

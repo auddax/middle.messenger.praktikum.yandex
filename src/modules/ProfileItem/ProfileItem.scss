@@ -1,0 +1,11 @@
+.profile-item__row {
+  justify-content: space-between;
+  align-items: center;
+  height: 32px;
+  width: 510px;
+  border-bottom: 1px solid $color-middle-gray;
+
+  .profile-item__right-col {
+    color: $color-dark-gray;
+  }
+}

@@ -1,0 +1,14 @@
+.card-modal {
+  .card-modal__inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    margin: 65px 0;
+  }
+
+  .button-primary {
+    display: block;
+    margin: 0 auto 1rem;
+  }
+}
