@@ -1,7 +1,7 @@
 class EventBus {
-  private listeners: { [key: string]: Array<(args?: unknown) => void> } = {};
+  private listeners: { [key: string]: Array<(...args: unknown[]) => void> } = {};
 
-  on(event: string, callback: () => void) {
+  on(event: string, callback: (...args: unknown[]) => void) {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
@@ -9,7 +9,7 @@ class EventBus {
     this.listeners[event].push(callback);
   }
 
-  off(event: string, callback: () => void) {
+  off(event: string, callback: (...args: unknown[]) => void) {
 		if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }
@@ -27,3 +27,5 @@ class EventBus {
     this.listeners[event].forEach(listener => listener(...args));
   }
 }
+
+export default EventBus;
