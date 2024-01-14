@@ -1,1 +1,1 @@
-export { default as Row } from './Row.hbs?raw';
+export { Row } from './Row';

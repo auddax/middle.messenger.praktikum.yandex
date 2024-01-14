@@ -1,1 +1,1 @@
-export { default as Col } from './Col.hbs?raw';
+export { Col } from './Col';
