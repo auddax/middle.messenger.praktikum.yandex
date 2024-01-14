@@ -1,8 +1,8 @@
-export { LoginCard } from './LoginCard';
-export { SignupCard } from './SignupCard';
-export { UserCard } from './UserCard';
-export { ProfileCard } from './ProfileCard';
-export { ProfileEditCard } from './ProfileEditCard';
-export { ProfileItem } from './ProfileItem';
-export { ProfileEditItem } from './ProfileEditItem';
-export { ProfileEditPassword } from './ProfileEditPassword';
+export * from './LoginCard';
+export * from './SignupCard';
+export * from './UserCard';
+export * from './ProfileCard';
+export * from './ProfileEditCard';
+export * from './ProfileItem';
+export * from './ProfileEditItem';
+export * from './ProfileEditPassword';
