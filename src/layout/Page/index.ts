@@ -1,1 +1,1 @@
-export { default as Page } from './Page.hbs?raw';
+export { Page } from './Page';

@@ -1,3 +1,3 @@
-export { Col } from './Col';
-export { Row } from './Row';
-export { Page } from './Page';
+export * from './Col';
+export * from './Row';
+export * from './Page';
