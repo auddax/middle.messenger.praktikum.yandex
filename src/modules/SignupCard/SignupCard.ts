@@ -18,10 +18,10 @@ const signupInputs = [
     htmlType: 'text', type: 'text', label: 'Номер телефона', id: 'signupCardPhone', name: 'phone',
   },
   {
-    htmlType: 'text', type: 'text', label: 'Пароль', id: 'signupCardPassword', name: 'password',
+    htmlType: 'password', type: 'text', label: 'Пароль', id: 'signupCardPassword', name: 'password',
   },
   {
-    htmlType: 'text', type: 'text', label: 'Повторите пароль', id: 'signupCardConfirmPassword', name: 'confirmPassword',
+    htmlType: 'password', type: 'text', label: 'Повторите пароль', id: 'signupCardConfirmPassword', name: 'confirmPassword',
   },
 ];
 

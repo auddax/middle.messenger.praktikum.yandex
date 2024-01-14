@@ -6,7 +6,7 @@ const loginInputs = [
     htmlType: 'text', type: 'text', label: 'Логин', id: 'loginCardLogin', name: 'login',
   },
   {
-    htmlType: 'text', type: 'text', label: 'Пароль', id: 'loginCardPassword', name: 'password',
+    htmlType: 'password', type: 'text', label: 'Пароль', id: 'loginCardPassword', name: 'password',
   },
 ];
 

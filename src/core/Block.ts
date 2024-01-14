@@ -154,7 +154,6 @@ class Block {
 
     const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
     fragment.innerHTML = Handlebars.compile(template)(contextAndStubs);
-
     contextAndStubs.__children?.forEach(({ embed }: any) => {
       embed(fragment.content);
     });
