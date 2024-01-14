@@ -1,1 +1,1 @@
-export { default as SignupPage } from './SignupPage.hbs?raw';
+export { SignupPage } from './SignupPage';
