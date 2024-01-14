@@ -1,1 +1,1 @@
-export { default as Card } from './Card.hbs?raw';
+export { Card } from './Card';

@@ -4,6 +4,7 @@ import Handlebars from 'handlebars';
 
 class Block {
   protected props: { [key: string]: unknown };
+  protected refs: { [key: string]: Block } = {};
   public children: { [key: string]: Block };
   public id: string = uuidv4();
   private eventBus: EventBus;
@@ -86,32 +87,44 @@ class Block {
     });
   }
 
-  private _render() {
-    const propsAndStubs = { ...this.props };
+  // private _render() {
+  //   const propsAndStubs = { ...this.props };
 
-    this._removeEvents();
+  //   this._removeEvents();
 
-    Object.entries(this.children).forEach(([key, child]) => {
-        propsAndStubs[key] = `<div data-id="${child.id}"></div>`
-    });
+  //   Object.entries(this.children).forEach(([key, child]) => {
+  //       propsAndStubs[key] = `<div data-id="${child.id}"></div>`
+  //   });
 
-    const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
+  //   const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
 
-    fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
-    const newElement = fragment.content.firstElementChild as HTMLElement;
+  //   fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
+  //   const newElement = fragment.content.firstElementChild as HTMLElement;
 
-    Object.values(this.children).forEach(child => {
-        const stub = fragment.content.querySelector(`[data-id="${child.id}"]`);
-        const childContent = child.getContent();
-        if (stub && childContent) stub.replaceWith(childContent);
-    });
+  //   Object.values(this.children).forEach(child => {
+  //       const stub = fragment.content.querySelector(`[data-id="${child.id}"]`);
+  //       const childContent = child.getContent();
+  //       if (stub && childContent) stub.replaceWith(childContent);
+  //   });
 
-    if (this._element && newElement) {
-        this._element.replaceWith(newElement);
-    }
+  //   if (this._element && newElement) {
+  //       this._element.replaceWith(newElement);
+  //   }
   
-    this._element = newElement;
+  //   this._element = newElement;
 
+  //   this._addEvents();
+  // }
+
+  private _render() {
+    const fragment = this.render()
+    const newElement = fragment.firstElementChild as HTMLElement;
+
+    if (this._element) {
+      this._element.replaceWith(newElement)
+    }
+
+    this._element = newElement;
     this._addEvents();
   }
 
@@ -121,11 +134,38 @@ class Block {
 
   private _componentDidMount() {
     this.componentDidMount();
+
+    Object.values(this.children).forEach(child => {
+      child.dispatchComponentDidMount();
+    });
   }
 
   private _componentDidUpdate() {
     const response = this.componentDidUpdate();
     if (response) this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
+  }
+
+  compile(template: string, context: { [key: string]: unknown }) {
+    const contextAndStubs = { ...context, __refs: this.refs };
+
+    Object.entries(this.children).forEach(([key, child]) => {
+      contextAndStubs[key] = `<div data-id="${child.id}"></div>`;
+    });
+
+    const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
+    fragment.innerHTML = Handlebars.compile(template)(contextAndStubs);
+
+    contextAndStubs.__children?.forEach(({ embed }: any) => {
+      embed(fragment.content);
+    });
+
+    Object.values(this.children).forEach(child => {
+      const stub = fragment.content.querySelector(`[data-id="${child.id}"]`);
+      const childContent = child.getContent();
+      if (stub && childContent) stub.replaceWith(childContent);
+    });
+
+    return fragment.content;
   }
 
   init() {
@@ -144,7 +184,9 @@ class Block {
     return true;
   }
 
-  render() {}
+  render(): DocumentFragment {
+    return new DocumentFragment()
+  }
 
   componentDidMount() {}
 

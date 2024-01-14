@@ -1,1 +1,1 @@
-export { default as Badge } from './Badge.hbs?raw';
+export { Badge } from './Badge';
