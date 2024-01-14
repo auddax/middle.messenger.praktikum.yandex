@@ -1,8 +1,8 @@
-export { Badge } from './Badge';
-export { Avatar } from './Avatar';
-export { Button } from './Button';
-export { Form } from './Form';
-export { Card } from './Card';
-export { Input } from './Input';
-export { Title } from './Title';
-export { Message } from './Message';
+export * from './Badge';
+export * from './Avatar';
+export * from './Button';
+export * from './Form';
+export * from './Card';
+export * from './Input';
+export * from './Title';
+export * from './Message';
