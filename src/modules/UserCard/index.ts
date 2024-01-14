@@ -1,1 +1,1 @@
-export { default as UserCard } from './UserCard.hbs?raw';
+export { UserCard } from './UserCard';
