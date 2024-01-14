@@ -1,11 +1,13 @@
 import Block from 'src/core/Block';
 import template from './Row.hbs?raw';
 
+type RowProps = {
+  rowClassName: string;
+}
+
 class Row extends Block {
-  constructor() {
-    super({
-      onLogin: () => {}
-    })
+  constructor(props: RowProps) {
+    super(props);
   }
 
   render() {
