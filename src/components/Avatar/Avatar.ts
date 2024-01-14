@@ -5,6 +5,7 @@ type AvatarProps = {
   avatarType: string;
   avatarAltText: string;
   userInitials: string;
+  path: string;
 };
 
 class Avatar extends Block {

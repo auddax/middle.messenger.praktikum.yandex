@@ -1,5 +1,11 @@
 {{# Row rowClassName='profile-edit-item__row'}}
   {{# Col colClassName='profile-edit-item__left-col' }}
-   {{{ Input className='profile-edit-item__input'}}}
+    {{{ Input 
+      className='profile-edit-item__input' 
+      label=this.label 
+      htmlType=this.htmlType 
+      name=this.name 
+      id=this.id
+    }}}
   {{/Col}}
 {{/Row}}

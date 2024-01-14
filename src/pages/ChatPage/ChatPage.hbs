@@ -3,7 +3,7 @@
     {{# Col colClassName='left-col'}}
       <div class="page-chat__chat-controls">
       {{# Button type='link' page="profilePage"}}
-       Профиль
+        Профиль
       {{/Button}}
       {{# Form}}
         {{{ Input label='Поиск' className='page-chat__input' name='user_chat' id='chatSearchInput' }}}
@@ -26,14 +26,14 @@
     {{/Col}}
     {{# Col colClassName='right-col'}}
       <div class="page-chat__user-info">
-        {{{ Avatar avatarType='card-user' userInitials='ИИ'}}}
+        {{{ Avatar avatarType='card-user' userInitials='ИИ' }}}
         {{# Title level='3' }}
           Иван
         {{/Title}}
       </div>
       <div class="page-chat__messages">
         {{#each userMessages}}
-          {{# Message }}
+          {{# Message messageClassName=this.messageClassName }}
             {{ this.userMessage }}
           {{/Message}}
         {{/each}}

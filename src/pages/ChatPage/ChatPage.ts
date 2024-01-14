@@ -1,7 +1,7 @@
 import Block from 'src/core/Block';
 import template from './ChatPage.hbs?raw';
 
-const userCardsArr = Array(10).fill({
+const userCards = Array(10).fill({
   avatarAltText: 'Иванов Иван',
   avatarType: 'card-user',
   level: '4',
@@ -26,7 +26,7 @@ const userMessages = [
 class ChatPage extends Block {
   constructor() {
     super({ 
-      userCardsArr,
+      userCards,
       userMessages, 
     })
   }
