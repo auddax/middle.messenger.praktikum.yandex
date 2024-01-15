@@ -1,5 +1,6 @@
 import Block from 'src/core/Block';
 import template from './SignupCard.hbs?raw';
+import { submitHandler } from 'src/utils/handlers';
 
 const signupInputs = [
   {
@@ -27,7 +28,10 @@ const signupInputs = [
 
 class SignupCard extends Block {
   constructor() {
-    super({ signupInputs });
+    super({ 
+      signupInputs,
+      submitHandler: () => submitHandler('signupForm'),
+    });
   }
 
   render() {

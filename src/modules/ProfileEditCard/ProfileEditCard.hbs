@@ -8,7 +8,7 @@
   {{# Title level='3'}}
     Иван
   {{/Title}}
-  {{# Form}}
+  {{# Form formId='profileEditForm'}}
     {{#each profileEditItems}}
       {{{ ProfileEditItem 
         label=this.label 
@@ -18,7 +18,7 @@
       }}}
     {{/each}}
     <div class="card-profile__controls">
-      {{# Button type='primary' page="profilePage"}}
+      {{# Button type='primary' page="profilePage" onClick=this.submitHandler }}
         Сохранить
       {{/Button}}
     </div>
