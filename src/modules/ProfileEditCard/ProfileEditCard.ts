@@ -1,5 +1,6 @@
 import Block from 'src/core/Block';
 import template from './ProfileEditCard.hbs?raw';
+import { submitHandler } from 'src/utils/handlers';
 
 const profileEditItems = [
   {
@@ -24,7 +25,10 @@ const profileEditItems = [
 
 class ProfileEditCard extends Block {
   constructor() {
-    super({ profileEditItems })
+    super({ 
+      profileEditItems,
+      submitHandler: () => submitHandler('profileEditForm'),
+    });
   }
 
   render() {

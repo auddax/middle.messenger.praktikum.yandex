@@ -7,11 +7,18 @@ type InputProps = {
   label: string;
   name: string;
   htmlType: string;
+  onInput?: () => void;
+  onBlur?: () => void;
 }
 
 class Input extends Block {
   constructor(props: InputProps) {
-    super(props)
+    super({
+      ...props,
+      events: {
+        input: props.onInput,
+      },
+    });
   }
 
   render() {

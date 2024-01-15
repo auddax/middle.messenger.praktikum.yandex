@@ -120,6 +120,8 @@ class Block {
     const fragment = this.render()
     const newElement = fragment.firstElementChild as HTMLElement;
 
+    this._removeEvents();
+
     if (this._element) {
       this._element.replaceWith(newElement)
     }

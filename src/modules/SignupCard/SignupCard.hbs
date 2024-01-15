@@ -2,7 +2,7 @@
   {{# Title level='2'}}
     Регистрация
   {{/Title}}
-  {{# Form }}
+  {{# Form formId='signupForm' }}
     <div class="card-modal__inputs">
       {{#each signupInputs}}
         {{{ Input 
@@ -15,7 +15,7 @@
         }}}
       {{/each}}
     </div>
-    {{# Button type='primary' page='chatPage'}}
+    {{# Button type='primary' page='chatPage' onClick=this.submitHandler }}
       Зарегистрироваться
     {{/Button}}
   {{/Form}}

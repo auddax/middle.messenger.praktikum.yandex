@@ -4,11 +4,17 @@ import template from './Button.hbs?raw';
 type ButtonProps = {
   type: string;
   page: string;
+  onClick?: () => void;
 }
 
 class Button extends Block {
   constructor(props: ButtonProps) {
-    super(props)
+    super({
+      ...props,
+      events: {
+        click: props.onClick,
+      },
+    });
   }
 
   render() {

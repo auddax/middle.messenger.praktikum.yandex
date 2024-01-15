@@ -2,7 +2,7 @@
   {{# Title level='2'}}
     Вход
   {{/Title}}
-  {{# Form }}
+  {{# Form formId='loginForm' }}
     <div class="card-modal__inputs">
       {{#each loginInputs}}
         {{{ Input 
@@ -12,10 +12,11 @@
           label=this.label 
           name=this.name 
           htmlType=this.htmlType 
+          onInput=this.inputHandler
         }}}
       {{/each}}
     </div>
-    {{# Button type='primary' page='chatPage'}}
+    {{# Button type='primary' page='chatPage' onClick=this.submitHandler }}
       Войти
     {{/Button}}
   {{/Form}}

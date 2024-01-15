@@ -3,11 +3,18 @@ import template from './Form.hbs?raw';
 
 type FormProps = {
   formClassName: string;
+  formId: string;
+  onSubmit?: () => void;
 }
 
 class Form extends Block {
   constructor(props: FormProps) {
-    super(props)
+    super({
+      ...props,
+      events: {
+        submit: props.onSubmit,
+      },
+    });
   }
 
   render() {
