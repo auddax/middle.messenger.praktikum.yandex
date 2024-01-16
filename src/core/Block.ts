@@ -92,35 +92,6 @@ class Block {
     });
   }
 
-  // private _render() {
-  //   const propsAndStubs = { ...this.props };
-
-  //   this._removeEvents();
-
-  //   Object.entries(this.children).forEach(([key, child]) => {
-  //       propsAndStubs[key] = `<div data-id="${child.id}"></div>`
-  //   });
-
-  //   const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
-
-  //   fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
-  //   const newElement = fragment.content.firstElementChild as HTMLElement;
-
-  //   Object.values(this.children).forEach(child => {
-  //       const stub = fragment.content.querySelector(`[data-id="${child.id}"]`);
-  //       const childContent = child.getContent();
-  //       if (stub && childContent) stub.replaceWith(childContent);
-  //   });
-
-  //   if (this._element && newElement) {
-  //       this._element.replaceWith(newElement);
-  //   }
-
-  //   this._element = newElement;
-
-  //   this._addEvents();
-  // }
-
   private _render() {
     const fragment = this.render();
     const newElement = fragment.firstElementChild as HTMLElement;
@@ -153,7 +124,7 @@ class Block {
   }
 
   compile(template: string, context: { [key: string]: unknown }) {
-    const contextAndStubs = { ...context, __refs: this.refs };
+    const contextAndStubs: { [key: string]: unknown } = { ...context, __refs: this.refs };
 
     Object.entries(this.children).forEach(([key, child]) => {
       contextAndStubs[key] = `<div data-id="${child.id}"></div>`;
@@ -161,7 +132,7 @@ class Block {
 
     const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
     fragment.innerHTML = Handlebars.compile(template)(contextAndStubs);
-    contextAndStubs.__children?.forEach(({ embed }: any) => {
+    (contextAndStubs.__children as object[])?.forEach(({ embed }: any) => {
       embed(fragment.content);
     });
 
