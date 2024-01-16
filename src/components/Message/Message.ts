@@ -3,11 +3,11 @@ import template from './Message.hbs?raw';
 
 type MessageProps = {
   messageClassName: string;
-}
+};
 
 class Message extends Block {
   constructor(props: MessageProps) {
-    super(props)
+    super(props);
   }
 
   render() {

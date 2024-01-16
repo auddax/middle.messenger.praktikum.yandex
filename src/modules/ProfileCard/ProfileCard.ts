@@ -24,7 +24,7 @@ const profileItems = [
 
 class ProfileCard extends Block {
   constructor() {
-    super({ profileItems })
+    super({ profileItems });
   }
 
   render() {

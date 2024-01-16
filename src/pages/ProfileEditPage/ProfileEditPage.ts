@@ -11,4 +11,4 @@ class ProfileEditPage extends Block {
   }
 }
 
-export  { ProfileEditPage };
+export { ProfileEditPage };

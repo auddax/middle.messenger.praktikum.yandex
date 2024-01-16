@@ -1,4 +1,4 @@
-import * as Pages from 'src/pages'
+import * as Pages from 'src/pages';
 import Block from 'src/core/Block';
 
 const pages: { [key: string]: typeof Block } = {
@@ -16,7 +16,7 @@ export function navigate(pageName: string) {
   const Page = pages[pageName];
   const page = new Page();
   const container = document.getElementById('app');
-  container?.firstElementChild 
+  container?.firstElementChild
     ? container?.firstElementChild?.replaceWith(page.render())
-    : container?.append(page.render())
-};
+    : container?.append(page.render());
+}

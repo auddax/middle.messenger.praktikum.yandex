@@ -1,6 +1,6 @@
 import Block from 'src/core/Block';
-import template from './ProfileEditPassword.hbs?raw';
 import { submitHandler } from 'src/utils/handlers';
+import template from './ProfileEditPassword.hbs?raw';
 
 const profileEditPassword = [
   {
@@ -16,10 +16,10 @@ const profileEditPassword = [
 
 class ProfileEditPassword extends Block {
   constructor() {
-    super({ 
+    super({
       profileEditPassword,
       submitHandler: () => submitHandler('profileEditPasswordForm'),
-    })
+    });
   }
 
   render() {

@@ -11,4 +11,4 @@ class SignupPage extends Block {
   }
 }
 
-export  { SignupPage };
+export { SignupPage };

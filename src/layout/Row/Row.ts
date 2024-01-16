@@ -3,7 +3,7 @@ import template from './Row.hbs?raw';
 
 type RowProps = {
   rowClassName: string;
-}
+};
 
 class Row extends Block {
   constructor(props: RowProps) {

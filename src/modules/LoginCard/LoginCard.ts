@@ -1,21 +1,21 @@
 import Block from 'src/core/Block';
-import template from './LoginCard.hbs?raw';
 import { submitHandler, focusOutHandler } from 'src/utils/handlers';
+import template from './LoginCard.hbs?raw';
 
 const loginInputs = [
   {
-    htmlType: 'text', 
-    type: 'text', 
-    label: 'Логин', 
-    id: 'loginCardLogin', 
-    name: 'login', 
+    htmlType: 'text',
+    type: 'text',
+    label: 'Логин',
+    id: 'loginCardLogin',
+    name: 'login',
     focusOutHandler,
   },
   {
-    htmlType: 'password', 
-    type: 'text', 
-    label: 'Пароль', 
-    id: 'loginCardPassword', 
+    htmlType: 'password',
+    type: 'text',
+    label: 'Пароль',
+    id: 'loginCardPassword',
     name: 'password',
     focusOutHandler,
   },
@@ -23,8 +23,8 @@ const loginInputs = [
 
 class LoginCard extends Block {
   constructor() {
-    super({ 
-      loginInputs, 
+    super({
+      loginInputs,
       submitHandler: () => submitHandler('loginForm'),
     });
   }

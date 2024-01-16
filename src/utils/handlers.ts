@@ -1,4 +1,4 @@
-import { validateField } from "./validateField";
+import { validateField } from './validateField';
 
 export const submitHandler = (formId: string) => {
   const formElement = document.getElementById(formId) as HTMLFormElement;
@@ -7,7 +7,7 @@ export const submitHandler = (formId: string) => {
     const formProps = Object.fromEntries(formData);
     console.log(formProps);
   }
-}
+};
 
 export const focusOutHandler = (event: Event) => {
   const element = event.target as HTMLInputElement;
@@ -15,13 +15,13 @@ export const focusOutHandler = (event: Event) => {
   const { value, name } = element;
   const { isValid, message } = validateField(value, name);
 
-  const messageElement = parent?.querySelector('.validation-message')
+  const messageElement = parent?.querySelector('.validation-message');
   if (messageElement) parent?.querySelector('.validation-message')?.remove();
 
   if (!isValid) {
-    const span = document.createElement('span')
+    const span = document.createElement('span');
     span.className = 'validation-message';
     span.textContent = message;
-    parent?.appendChild(span)
+    parent?.appendChild(span);
   }
-}
+};

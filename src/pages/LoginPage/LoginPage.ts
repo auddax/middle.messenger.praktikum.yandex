@@ -5,7 +5,7 @@ class LoginPage extends Block {
   constructor() {
     super({
       className: 'login',
-    })
+    });
   }
 
   render() {
@@ -13,4 +13,4 @@ class LoginPage extends Block {
   }
 }
 
-export  { LoginPage };
+export { LoginPage };

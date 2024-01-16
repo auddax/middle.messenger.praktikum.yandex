@@ -5,7 +5,7 @@ type UserCardProps = {
   userName: string;
   userCardText: string;
   userCardDateTime: string;
-}
+};
 
 class UserCard extends Block {
   constructor(props: UserCardProps) {

@@ -1,6 +1,5 @@
-import Handlebars from 'handlebars';
+import Handlebars, { HelperOptions } from 'handlebars';
 import Block from 'src/core/Block';
-import { HelperOptions } from 'handlebars';
 
 export function registerComponent(name: string, Component: typeof Block) {
   if (name in Handlebars.helpers) {
@@ -8,31 +7,30 @@ export function registerComponent(name: string, Component: typeof Block) {
   }
 
   Handlebars.registerHelper(name, function (this: unknown, { hash, data, fn }: HelperOptions) {
-      const component = new Component(hash);
-      const dataAttribute = `data-id="${component.id}"`;
+    const component = new Component(hash);
+    const dataAttribute = `data-id="${component.id}"`;
 
-      if ('ref' in hash) {
-        (data.root.__refs = data.root.__refs || {})[hash.ref] = component;
-      }
+    if ('ref' in hash) {
+      (data.root.__refs = data.root.__refs || {})[hash.ref] = component;
+    }
 
-      (data.root.__children = data.root.__children || []).push({
-        component,
-        embed(fragment: DocumentFragment) {
-          const stub = fragment.querySelector(`[${dataAttribute}]`);
+    (data.root.__children = data.root.__children || []).push({
+      component,
+      embed(fragment: DocumentFragment) {
+        const stub = fragment.querySelector(`[${dataAttribute}]`);
 
-          if (!stub) {
-            return;
-          }
+        if (!stub) {
+          return;
+        }
 
-          component.getContent()?.append(...Array.from(stub.childNodes));
+        component.getContent()?.append(...Array.from(stub.childNodes));
 
-          stub.replaceWith(component.getContent()!);
-        },
-      });
+        stub.replaceWith(component.getContent()!);
+      },
+    });
 
-      const contents = fn ? fn(this) : '';
+    const contents = fn ? fn(this) : '';
 
-      return `<div ${dataAttribute}>${contents}</div>`;
-    },
-  );
+    return `<div ${dataAttribute}>${contents}</div>`;
+  });
 }

@@ -1,8 +1,8 @@
+import { registerComponent } from 'src/utils/registerComponent';
+import { navigate } from 'src/utils/navigate';
 import * as Components from './components';
 import * as Layout from './layout';
 import * as Modules from './modules';
-import { registerComponent } from 'src/utils/registerComponent';
-import { navigate } from 'src/utils/navigate';
 
 Object.entries(Components).forEach(([name, component]) => {
   registerComponent(name, component);
