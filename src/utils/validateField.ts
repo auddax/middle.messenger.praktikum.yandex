@@ -23,7 +23,7 @@ const rules = {
     regexp: /.+/,
     message: 'Поле не может быть пустым',
 
-  }
+  },
 };
 
 export const validateField = (value: string, name: string) => {
@@ -50,7 +50,7 @@ export const validateField = (value: string, name: string) => {
       rule = rules.name;
       break;
     case 'message':
-      rule=rules.message;
+      rule = rules.message;
       break;
     default:
       return { isValid: true, message: '' };

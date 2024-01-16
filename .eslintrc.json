@@ -18,6 +18,11 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "import/prefer-default-export": "off"
+        "import/prefer-default-export": "off",
+        "no-underscore-dangle": "off",
+        "@typescript-eslint/no-this-alias": "warn",
+        "class-methods-use-this": "warn",
+        "func-names": "warn",
+        "no-param-reassign": "warn"
     }
 }
