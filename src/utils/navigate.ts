@@ -16,7 +16,9 @@ export function navigate(pageName: string) {
   const Page = pages[pageName];
   const page = new Page();
   const container = document.getElementById('app');
-  container?.firstElementChild
-    ? container?.firstElementChild?.replaceWith(page.render())
-    : container?.append(page.render());
+  if (container?.firstElementChild) {
+    container?.firstElementChild?.replaceWith(page.render());
+  } else {
+    container?.append(page.render());
+  }
 }

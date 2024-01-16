@@ -2,6 +2,10 @@ import { v4 as uuidv4 } from 'uuid';
 import Handlebars from 'handlebars';
 import EventBus from './EventBus';
 
+type Child = {
+  embed: (content: DocumentFragment) => void;
+};
+
 class Block {
   protected props: { [key: string]: unknown };
 
@@ -132,7 +136,7 @@ class Block {
 
     const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
     fragment.innerHTML = Handlebars.compile(template)(contextAndStubs);
-    (contextAndStubs.__children as object[])?.forEach(({ embed }: any) => {
+    (contextAndStubs.__children as Child[])?.forEach(({ embed }) => {
       embed(fragment.content);
     });
 

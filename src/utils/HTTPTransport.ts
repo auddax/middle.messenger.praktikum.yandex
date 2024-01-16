@@ -52,21 +52,13 @@ class HTTPTransport {
       xhr.open(method, xhrUrl);
       xhr.timeout = timeout;
 
-      xhr.onload = function () {
-        resolve(xhr);
-      };
+      xhr.onload = () => resolve(xhr);
 
-      xhr.onerror = function () {
-        reject(new Error('request error'));
-      };
+      xhr.onerror = () => reject(new Error('request error'));
 
-      xhr.onabort = function () {
-        reject(new Error('request aborted'));
-      };
+      xhr.onabort = () => reject(new Error('request aborted'));
 
-      xhr.ontimeout = function () {
-        reject(new Error('request timeout'));
-      };
+      xhr.ontimeout = () => reject(new Error('request timeout'));
 
       if (method === METHODS.GET) {
         xhr.send();
