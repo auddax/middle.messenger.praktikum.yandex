@@ -1,11 +1,6 @@
 import Block from 'src/core/Block';
 import template from './LoginCard.hbs?raw';
-import { submitHandler } from 'src/utils/handlers';
-
-const inputHandler = () => {
-  // const element = event.target as HTMLInputElement;
-  // console.log(element.value);
-}
+import { submitHandler, focusOutHandler } from 'src/utils/handlers';
 
 const loginInputs = [
   {
@@ -14,7 +9,7 @@ const loginInputs = [
     label: 'Логин', 
     id: 'loginCardLogin', 
     name: 'login', 
-    inputHandler,
+    focusOutHandler,
   },
   {
     htmlType: 'password', 
@@ -22,7 +17,7 @@ const loginInputs = [
     label: 'Пароль', 
     id: 'loginCardPassword', 
     name: 'password',
-    inputHandler,
+    focusOutHandler,
   },
 ];
 

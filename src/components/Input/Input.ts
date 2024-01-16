@@ -8,7 +8,7 @@ type InputProps = {
   name: string;
   htmlType: string;
   onInput?: () => void;
-  onBlur?: () => void;
+  onFocusOut?: () => void;
 }
 
 class Input extends Block {
@@ -17,6 +17,7 @@ class Input extends Block {
       ...props,
       events: {
         input: props.onInput,
+        focusout: props.onFocusOut,
       },
     });
   }

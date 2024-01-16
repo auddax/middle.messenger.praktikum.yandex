@@ -19,7 +19,7 @@ const profileEditItems = [
     label: 'Имя в чате', htmlType: 'text', name: 'display_name', id: 'profileDisplayNameInput',
   },
   {
-    label: 'Телефон', htmlType: 'number', name: 'phone', id: 'profilePhoneInput',
+    label: 'Телефон', htmlType: 'text', name: 'phone', id: 'profilePhoneInput',
   },
 ];
 

@@ -23,3 +23,9 @@ html {
 *:focus {
   outline: none;
 }
+
+.validation-message {
+  font-size: 0.6rem;
+  color: $color-red;
+  margin: 4px 0 0;
+}
