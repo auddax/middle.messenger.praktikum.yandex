@@ -18,9 +18,12 @@
     "strictNullChecks": true,
     "skipLibCheck": true,
     "baseUrl": ".",
+    "paths": {
+      "src/*": ["./src/*"],
+    },
   },
   "include": [
     "src",
-    "index.d.ts",
+    "index.d.ts"
   ]
 }
