@@ -1,28 +1,63 @@
 import Block from 'src/core/Block';
 import template from './SignupCard.hbs?raw';
-import { submitHandler } from 'src/utils/handlers';
+import { submitHandler, focusOutHandler, } from 'src/utils/handlers';
 
 const signupInputs = [
   {
-    htmlType: 'text', type: 'text', label: 'Почта', id: 'signupCardMail', name: 'email',
+    htmlType: 'text', 
+    type: 'text', 
+    label: 'Почта', 
+    id: 'signupCardMail', 
+    name: 'email', 
+    focusOutHandler,
   },
   {
-    htmlType: 'text', type: 'text', label: 'Логин', id: 'signupCardLogin', name: 'login',
+    htmlType: 'text', 
+    type: 'text', 
+    label: 'Логин', 
+    id: 'signupCardLogin', 
+    name: 'login', 
+    focusOutHandler,
   },
   {
-    htmlType: 'text', type: 'text', label: 'Имя', id: 'signupCardName', name: 'first_name',
+    htmlType: 'text', 
+    type: 'text', 
+    label: 'Имя', 
+    id: 'signupCardName', 
+    name: 'first_name', 
+    focusOutHandler,
   },
   {
-    htmlType: 'text', type: 'text', label: 'Фамилия', id: 'signupCardLastName', name: 'second_name',
+    htmlType: 'text', 
+    type: 'text', 
+    label: 'Фамилия', 
+    id: 'signupCardLastName', 
+    name: 'second_name', 
+    focusOutHandler,
   },
   {
-    htmlType: 'text', type: 'text', label: 'Номер телефона', id: 'signupCardPhone', name: 'phone',
+    htmlType: 'text', 
+    type: 'text', 
+    label: 'Номер телефона', 
+    id: 'signupCardPhone', 
+    name: 'phone', 
+    focusOutHandler,
   },
   {
-    htmlType: 'password', type: 'text', label: 'Пароль', id: 'signupCardPassword', name: 'password',
+    htmlType: 'password', 
+    type: 'text', 
+    label: 'Пароль', 
+    id: 'signupCardPassword', 
+    name: 'password', 
+    focusOutHandler,
   },
   {
-    htmlType: 'password', type: 'text', label: 'Повторите пароль', id: 'signupCardConfirmPassword', name: 'confirmPassword',
+    htmlType: 'password', 
+    type: 'text', 
+    label: 'Повторите пароль', 
+    id: 'signupCardConfirmPassword', 
+    name: 'confirmPassword', 
+    focusOutHandler,
   },
 ];
 

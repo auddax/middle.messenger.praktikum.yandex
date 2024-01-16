@@ -3,7 +3,8 @@ import template from './Button.hbs?raw';
 
 type ButtonProps = {
   type: string;
-  page: string;
+  page?: string;
+  buttonId?: string;
   onClick?: () => void;
 }
 
