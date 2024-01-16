@@ -8,7 +8,8 @@
     "build": "npm run prebuild && vite build",
     "preview": "vite preview",
     "start": "eslint src --ext ts && vite build && node ./server.cjs",
-    "lint": "eslint src --ext ts --report-unused-disable-directives"
+    "eslint": "eslint src --ext ts",
+    "stylelint": "stylelint \"**/*.{css,scss}\""
   },
   "devDependencies": {
     "@types/handlebars-helpers": "^0.5.6",
