@@ -1,11 +1,11 @@
 const rules = {
   login: {
-    regexp: /^[a-zA-Z0-9_-]{3,10}$/,
-    message: 'Логин должен включать в себя от 3 до 10 символов латиницы или цифр',
+    regexp: /^[a-zA-Z0-9_-]{3,20}$/,
+    message: 'Логин должен включать в себя от 3 до 20 символов латиницы или цифр',
   },
   password: {
-    regexp: /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{5,20}$/,
-    message: 'Пароль должен включать в себя от 5 до 20 символов латиницы в верхнем и нижнем регистрах и цифры',
+    regexp: /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,40}$/,
+    message: 'Пароль должен включать в себя от 8 до 40 символов латиницы в верхнем и нижнем регистрах и цифры',
   },
   email: {
     regexp: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -19,6 +19,11 @@ const rules = {
     regexp: /^([А-ЯЁA-Z][а-яёa-z]+-?[А-ЯЁA-Zа-яёa-z]*)$/,
     message: 'Проверьте правильность ввода, не допускаются цифры и спецсимволы',
   },
+  message: {
+    regexp: /.+/,
+    message: 'Поле не может быть пустым',
+
+  }
 };
 
 export const validateField = (value: string, name: string) => {
@@ -43,6 +48,9 @@ export const validateField = (value: string, name: string) => {
     case 'second_name':
     case 'display_name':
       rule = rules.name;
+      break;
+    case 'message':
+      rule=rules.message;
       break;
     default:
       return { isValid: true, message: '' };

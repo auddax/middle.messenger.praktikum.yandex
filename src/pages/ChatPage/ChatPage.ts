@@ -1,5 +1,5 @@
 import Block from 'src/core/Block';
-import { submitHandler } from 'src/utils/handlers';
+import { submitHandler, focusOutHandler } from 'src/utils/handlers';
 import template from './ChatPage.hbs?raw';
 
 const userCards = Array(10).fill({
@@ -29,6 +29,7 @@ class ChatPage extends Block {
     super({
       userCards,
       userMessages,
+      focusOutHandler,
       submitHandler: () => submitHandler('messageForm'),
     });
   }
