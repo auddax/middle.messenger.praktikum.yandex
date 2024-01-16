@@ -5,7 +5,7 @@ type FormProps = {
   formClassName: string;
   formId: string;
   onSubmit?: () => void;
-}
+};
 
 class Form extends Block {
   constructor(props: FormProps) {

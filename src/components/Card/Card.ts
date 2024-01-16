@@ -3,11 +3,11 @@ import template from './Card.hbs?raw';
 
 type CardProps = {
   cardClassName: string;
-}
+};
 
 class Card extends Block {
   constructor(props: CardProps) {
-    super(props)
+    super(props);
   }
 
   render() {

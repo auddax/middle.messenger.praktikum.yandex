@@ -9,7 +9,7 @@ type InputProps = {
   htmlType: string;
   onInput?: () => void;
   onFocusOut?: () => void;
-}
+};
 
 class Input extends Block {
   constructor(props: InputProps) {

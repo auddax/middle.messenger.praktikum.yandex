@@ -3,11 +3,11 @@ import template from './Page.hbs?raw';
 
 type PageProps = {
   className: string;
-}
+};
 
 class Page extends Block {
   constructor(props: PageProps) {
-    super(props)
+    super(props);
   }
 
   render() {

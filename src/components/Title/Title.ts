@@ -3,11 +3,11 @@ import template from './Title.hbs?raw';
 
 type TitleProps = {
   level: string;
-}
+};
 
 class Title extends Block {
   constructor(props: TitleProps) {
-    super(props)
+    super(props);
   }
 
   render() {

@@ -11,4 +11,4 @@ class ProfileEditPasswordPage extends Block {
   }
 }
 
-export  { ProfileEditPasswordPage };
+export { ProfileEditPasswordPage };

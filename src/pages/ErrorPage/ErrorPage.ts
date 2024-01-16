@@ -11,4 +11,4 @@ class ErrorPage extends Block {
   }
 }
 
-export  { ErrorPage };
+export { ErrorPage };

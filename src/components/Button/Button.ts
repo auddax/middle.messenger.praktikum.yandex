@@ -6,7 +6,7 @@ type ButtonProps = {
   page?: string;
   buttonId?: string;
   onClick?: () => void;
-}
+};
 
 class Button extends Block {
   constructor(props: ButtonProps) {

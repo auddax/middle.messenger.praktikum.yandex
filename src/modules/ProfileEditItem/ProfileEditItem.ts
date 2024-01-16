@@ -1,17 +1,17 @@
 import Block from 'src/core/Block';
-import template from './ProfileEditItem.hbs?raw';
 import { focusOutHandler } from 'src/utils/handlers';
+import template from './ProfileEditItem.hbs?raw';
 
 type ProfileEditItemProps = {
-  label: string; 
-  htmlType: string; 
+  label: string;
+  htmlType: string;
   name: string;
   id: string;
-}
+};
 
 class ProfileEditItem extends Block {
   constructor(props: ProfileEditItemProps) {
-    super({ 
+    super({
       ...props,
       focusOutHandler,
     });

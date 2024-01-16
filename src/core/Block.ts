@@ -1,29 +1,34 @@
-import EventBus from './EventBus'
 import { v4 as uuidv4 } from 'uuid';
 import Handlebars from 'handlebars';
+import EventBus from './EventBus';
 
 class Block {
   protected props: { [key: string]: unknown };
+
   protected refs: { [key: string]: Block } = {};
+
   public children: { [key: string]: Block };
+
   public id: string = uuidv4();
+
   private eventBus: EventBus;
+
   private _element: HTMLElement | null = null;
 
   static EVENTS = {
-    INIT: "init",
-    FLOW_CDM: "flow:component-did-mount",
-    FLOW_CDU: "flow:component-did-update",
-    FLOW_RENDER: "flow:render"
+    INIT: 'init',
+    FLOW_CDM: 'flow:component-did-mount',
+    FLOW_CDU: 'flow:component-did-update',
+    FLOW_RENDER: 'flow:render',
   };
-  
+
   constructor(propsWithChildren: object = {}) {
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
-  
+
     this.props = this._makePropsProxy({ ...props });
     this.children = children;
-    this.eventBus = new EventBus();;
-  
+    this.eventBus = new EventBus();
+
     this._registerEvents(this.eventBus);
 
     this.eventBus.emit(Block.EVENTS.INIT);
@@ -34,11 +39,11 @@ class Block {
     const props: { [key: string]: unknown } = {};
 
     Object.entries(propsWithChildren).forEach(([key, value]) => {
-    if (value instanceof Block) {
-            children[key] = value;
-    } else {
-            props[key] = value;
-        }
+      if (value instanceof Block) {
+        children[key] = value;
+      } else {
+        props[key] = value;
+      }
     });
 
     return { children, props };
@@ -50,19 +55,19 @@ class Block {
     const propsProxy = new Proxy(props, {
       get(target, prop) {
         const value = target[prop];
-        return typeof value === "function" ? value.bind(target) : value;
+        return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target, prop, value) {
-        const oldTarget = { ...target }
+        const oldTarget = { ...target };
         target[prop] = value;
         self.eventBus.emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
       },
       deleteProperty() {
         throw new Error('Нет доступа');
-      }
+      },
     });
-  
+
     return propsProxy;
   }
 
@@ -74,16 +79,16 @@ class Block {
   }
 
   private _addEvents() {
-    const { events = {} } = this.props as { events: { [key: string]: () => void } }
-    Object.keys(events).forEach(e => {
+    const { events = {} } = this.props as { events: { [key: string]: () => void } };
+    Object.keys(events).forEach((e) => {
       this._element?.addEventListener(e, events[e]);
     });
   }
 
   private _removeEvents() {
-    const { events = {} } = this.props as { events: { [key: string]: () => void } }
-    Object.keys(events).forEach(event => {
-      this._element?.removeEventListener(event, events[event])
+    const { events = {} } = this.props as { events: { [key: string]: () => void } };
+    Object.keys(events).forEach((event) => {
+      this._element?.removeEventListener(event, events[event]);
     });
   }
 
@@ -110,20 +115,20 @@ class Block {
   //   if (this._element && newElement) {
   //       this._element.replaceWith(newElement);
   //   }
-  
+
   //   this._element = newElement;
 
   //   this._addEvents();
   // }
 
   private _render() {
-    const fragment = this.render()
+    const fragment = this.render();
     const newElement = fragment.firstElementChild as HTMLElement;
 
     this._removeEvents();
 
     if (this._element) {
-      this._element.replaceWith(newElement)
+      this._element.replaceWith(newElement);
     }
 
     this._element = newElement;
@@ -137,7 +142,7 @@ class Block {
   private _componentDidMount() {
     this.componentDidMount();
 
-    Object.values(this.children).forEach(child => {
+    Object.values(this.children).forEach((child) => {
       child.dispatchComponentDidMount();
     });
   }
@@ -160,7 +165,7 @@ class Block {
       embed(fragment.content);
     });
 
-    Object.values(this.children).forEach(child => {
+    Object.values(this.children).forEach((child) => {
       const stub = fragment.content.querySelector(`[data-id="${child.id}"]`);
       const childContent = child.getContent();
       if (stub && childContent) stub.replaceWith(childContent);
@@ -186,7 +191,7 @@ class Block {
   }
 
   render(): DocumentFragment {
-    return new DocumentFragment()
+    return new DocumentFragment();
   }
 
   componentDidMount() {}
@@ -206,13 +211,13 @@ class Block {
 
   show() {
     if (this._element) {
-      this._element.style.display = 'block'
+      this._element.style.display = 'block';
     }
   }
 
   hide() {
     if (this._element) {
-      this._element.style.display = 'none'
+      this._element.style.display = 'none';
     }
   }
 }

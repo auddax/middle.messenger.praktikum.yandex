@@ -10,7 +10,7 @@ type AvatarProps = {
 
 class Avatar extends Block {
   constructor(props: AvatarProps) {
-    super(props)
+    super(props);
   }
 
   render() {
