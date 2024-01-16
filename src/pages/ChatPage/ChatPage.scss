@@ -87,17 +87,17 @@
       background-color: $color-middle-gray;
       border: none;
     }
-  
-    &:focus::placeholder {
-      color: transparent;
-      transition: all $transition-time;
-    }
 
     &::placeholder {
       font-size: 1rem;
       font-family: $font-primary;
       color: $color-gray;
       text-align: center;
+    }
+  
+    &:focus::placeholder {
+      color: transparent;
+      transition: all $transition-time;
     }
   }
 }
