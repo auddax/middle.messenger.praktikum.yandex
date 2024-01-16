@@ -7,7 +7,7 @@
     "prebuild": "tsc --noEmit",
     "build": "npm run prebuild && vite build",
     "preview": "vite preview",
-    "start": "eslint src --ext ts && vite build && node ./server.cjs",
+    "start": "vite build && node ./server.cjs",
     "eslint": "eslint src --ext ts",
     "stylelint": "stylelint \"**/*.{css,scss}\""
   },
