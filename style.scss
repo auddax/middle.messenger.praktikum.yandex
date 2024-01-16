@@ -1,34 +1,34 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap';
 
 // Variables
-@import '/src/main.scss';
+@import '/src/main';
 
 // Layout
-@import '/src/layout/Page/Page.scss';
-@import '/src/layout/Row/Row.scss';
-@import '/src/layout/Col/Col.scss';
+@import '/src/layout/Page/Page';
+@import '/src/layout/Row/Row';
+@import '/src/layout/Col/Col';
 
 // Components
-@import '/src/components/Avatar/Avatar.scss';
-@import '/src/components/Badge/Badge.scss';
-@import '/src/components/Title/Title.scss';
-@import '/src/components/Input/Input.scss';
-@import '/src/components/Button/Button.scss';
-@import '/src/components/Card/Card.scss';
-@import '/src/components/Message/Message.scss';
+@import '/src/components/Avatar/Avatar';
+@import '/src/components/Badge/Badge';
+@import '/src/components/Title/Title';
+@import '/src/components/Input/Input';
+@import '/src/components/Button/Button';
+@import '/src/components/Card/Card';
+@import '/src/components/Message/Message';
 
 // Modules
-@import 'src/modules/LoginCard/LoginCard.scss';
-@import 'src/modules/UserCard/UserCard.scss';
-@import 'src/modules/ProfileItem/ProfileItem.scss';
-@import 'src/modules/ProfileEditItem/ProfileEditItem.scss';
-@import 'src/modules/ProfileEditPassword/ProfileEditPassword.scss';
-@import 'src/modules/ProfileCard/ProfileCard.scss';
-@import 'src/modules/ProfileEditCard/ProfileEditCard.scss';
+@import 'src/modules/LoginCard/LoginCard';
+@import 'src/modules/UserCard/UserCard';
+@import 'src/modules/ProfileItem/ProfileItem';
+@import 'src/modules/ProfileEditItem/ProfileEditItem';
+@import 'src/modules/ProfileEditPassword/ProfileEditPassword';
+@import 'src/modules/ProfileCard/ProfileCard';
+@import 'src/modules/ProfileEditCard/ProfileEditCard';
 
 // Pages
-@import 'src/pages/ErrorPage/ErrorPage.scss';
-@import 'src/pages/NotFoundPage/NotFoundPage.scss';
-@import 'src/pages/ChatPage/ChatPage.scss';
-@import 'src/pages/ProfilePage/ProfilePage.scss'
+@import 'src/pages/ErrorPage/ErrorPage';
+@import 'src/pages/NotFoundPage/NotFoundPage';
+@import 'src/pages/ChatPage/ChatPage';
+@import 'src/pages/ProfilePage/ProfilePage'
