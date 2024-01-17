@@ -94,14 +94,18 @@ class Block {
   private _addEvents() {
     const { events = {} } = this.props;
     Object.keys(events).forEach((e) => {
-      this._element?.addEventListener(e, events[e]);
+      if (events[e]) {
+        this._element?.addEventListener(e, events[e] as EventListenerOrEventListenerObject);
+      }
     });
   }
 
   private _removeEvents() {
     const { events = {} } = this.props;
-    Object.keys(events).forEach((event) => {
-      this._element?.removeEventListener(event, events[event]);
+    Object.keys(events).forEach((e) => {
+      if (events[e]) {
+        this._element?.removeEventListener(e, events[e] as EventListenerOrEventListenerObject);
+      }
     });
   }
 
