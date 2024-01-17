@@ -2,22 +2,31 @@ import { v4 as uuidv4 } from 'uuid';
 import Handlebars from 'handlebars';
 import EventBus from './EventBus';
 
-type Child = {
-  embed: (content: DocumentFragment) => void;
+type Props = {
+  [key: string | symbol]: unknown | Block;
+  events?: Events;
 };
 
-class Block {
-  protected props: { [key: string]: unknown };
+type Child = { embed: (content: DocumentFragment) => void };
 
-  protected refs: { [key: string]: Block } = {};
+type Events = { [key: string]: () => void };
 
-  public children: { [key: string]: Block };
+type Children = { [key: string]: Block };
 
-  public id: string = uuidv4();
+type Refs = { [key: string]: Element | Block };
+
+abstract class Block {
+  protected props: Props;
+
+  public children: Children;
+
+  protected refs: Refs = {};
 
   private eventBus: EventBus;
 
   private _element: HTMLElement | null = null;
+
+  public id: string = uuidv4();
 
   static EVENTS = {
     INIT: 'init',
@@ -26,7 +35,7 @@ class Block {
     FLOW_RENDER: 'flow:render',
   };
 
-  constructor(propsWithChildren: object = {}) {
+  constructor(propsWithChildren: Props = {}) {
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
 
     this.props = this._makePropsProxy({ ...props });
@@ -38,9 +47,9 @@ class Block {
     this.eventBus.emit(Block.EVENTS.INIT);
   }
 
-  private _getChildrenAndProps(propsWithChildren: object) {
-    const children: { [key: string]: Block } = {};
-    const props: { [key: string]: unknown } = {};
+  private _getChildrenAndProps(propsWithChildren: Props) {
+    const children: Children = {};
+    const props: Props = {};
 
     Object.entries(propsWithChildren).forEach(([key, value]) => {
       if (value instanceof Block) {
@@ -53,7 +62,7 @@ class Block {
     return { children, props };
   }
 
-  private _makePropsProxy(props: { [key: string | symbol]: unknown }) {
+  private _makePropsProxy(props: Props) {
     const self = this;
 
     const propsProxy = new Proxy(props, {
@@ -83,14 +92,14 @@ class Block {
   }
 
   private _addEvents() {
-    const { events = {} } = this.props as { events: { [key: string]: () => void } };
+    const { events = {} } = this.props;
     Object.keys(events).forEach((e) => {
       this._element?.addEventListener(e, events[e]);
     });
   }
 
   private _removeEvents() {
-    const { events = {} } = this.props as { events: { [key: string]: () => void } };
+    const { events = {} } = this.props;
     Object.keys(events).forEach((event) => {
       this._element?.removeEventListener(event, events[event]);
     });
