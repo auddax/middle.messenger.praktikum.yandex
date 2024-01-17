@@ -5,6 +5,8 @@ type Options = {
   timeout?: number,
 };
 
+type HTTPMethod = (url: string, options?: Options) => Promise<unknown>;
+
 enum METHODS {
   GET = 'GET',
   PUT = 'PUT',
@@ -22,13 +24,13 @@ function queryStringify(data = {}) {
 }
 
 class HTTPTransport {
-  get = (url: string, options: Options) => this.request(url, { ...options, method: METHODS.GET });
+  get: HTTPMethod = (url, options) => this.request(url, { ...options, method: METHODS.GET });
 
-  post = (url: string, options = {}) => this.request(url, { ...options, method: METHODS.POST });
+  post: HTTPMethod = (url, options) => this.request(url, { ...options, method: METHODS.POST });
 
-  put = (url: string, options = {}) => this.request(url, { ...options, method: METHODS.PUT });
+  put: HTTPMethod = (url, options) => this.request(url, { ...options, method: METHODS.PUT });
 
-  delete = (url: string, options = {}) => this.request(url, { ...options, method: METHODS.DELETE });
+  delete: HTTPMethod = (url, options) => this.request(url, { ...options, method: METHODS.DELETE });
 
   request = (url: string, options: Options) => {
     const {
