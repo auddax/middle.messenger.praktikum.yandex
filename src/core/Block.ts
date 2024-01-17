@@ -9,13 +9,13 @@ type Props = {
 
 type Child = { embed: (content: DocumentFragment) => void };
 
-type Events = { [key: string]: () => void };
+type Events = { [key: string]: (() => void) | undefined };
 
 type Children = { [key: string]: Block };
 
 type Refs = { [key: string]: Element | Block };
 
-abstract class Block {
+class Block {
   protected props: Props;
 
   public children: Children;
