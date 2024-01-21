@@ -1,18 +1,15 @@
 $font-primary: 'Inter', sans-serif;
-
-$color-white: #FFFFFF;
+$color-white: #FFF;
 $color-red: #FF2A54;
 $color-gray: #CFCFCF;
 $color-middle-gray: #EFEFEF;
 $color-light-gray: #F8F9FA;
-$color-dark-gray: #999999;
+$color-dark-gray: #999;
 $color-green: #31DAE6;
 $color-dark-blue: #462A69;
 $color-blue: #51D7FF;
 $color-light-blue: #d5f2fb;
-
 $transition-time: 0.5s;
-
 $hover-opacity: 0.6;
 
 html {
@@ -22,4 +19,10 @@ html {
 
 *:focus {
   outline: none;
+}
+
+.validation-message {
+  font-size: 0.6rem;
+  color: $color-red;
+  margin: 4px 0 0;
 }

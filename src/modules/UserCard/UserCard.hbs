@@ -1,19 +1,23 @@
-{{#> Card cardClassName='card-user'}}
-  {{#> Row}}
-    {{#> Col}}
-      {{> Avatar }}
+{{# Card cardClassName='card-user'}}
+  {{# Row}}
+    {{# Col}}
+      {{{ Avatar 
+        avatarAltText=this.avatarAltText 
+        avatarType=this.avatarType
+        userInitials=this.userInitials 
+      }}}
     {{/Col}}
-    {{#> Col}}
-        {{#> Title }}
+    {{# Col}}
+        {{# Title level=this.level }}
           {{ userName }}
         {{/Title}}
         <div class="card-user__message">
           <span>{{ userCardText }} </span>
         </div>
     {{/Col}}
-    {{#> Col}}
+    {{# Col}}
         <div class="card-user__date-time">{{ userCardDateTime }}</div>
-        {{> Badge }}
+        {{{ Badge badgeText=this.badgeText }}}
     {{/Col}}
   {{/Row}}
 {{/Card}}
