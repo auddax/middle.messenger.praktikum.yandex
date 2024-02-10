@@ -7,3 +7,4 @@ export * from './Input';
 export * from './Title';
 export * from './Message';
 export * from './Modal';
+export * from './Backdrop';
