@@ -12,9 +12,20 @@ $color-light-blue: #d5f2fb;
 $transition-time: 0.5s;
 $hover-opacity: 0.6;
 
+@mixin center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 html {
   font-family: $font-primary;
   box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 *:focus {
