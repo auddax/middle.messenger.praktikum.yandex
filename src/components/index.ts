@@ -6,3 +6,4 @@ export * from './Card';
 export * from './Input';
 export * from './Title';
 export * from './Message';
+export * from './Modal';

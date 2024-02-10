@@ -1,0 +1,27 @@
+.popup {
+  @include center-content;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  cursor: pointer;
+  transition: $transition-time;
+  color: $color-dark-blue;
+  background-color: rgba(0, 0, 0, 0.55);
+  font-family: $font-primary;
+  
+  .popup__body {
+    @include center-content;
+    padding: 2rem;
+    flex-direction: column;
+    border: 1px double #e5e5e5;
+    border-radius: 5px;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+    background-color: $color-light-gray;
+    cursor: auto;
+  }
+}
