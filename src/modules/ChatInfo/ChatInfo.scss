@@ -1,0 +1,13 @@
+.chat__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 27px 0 10px;
+  border-bottom: 1px solid $color-middle-gray;
+
+  .header__info {
+    @include center-content;
+    gap: 16px;
+  }
+}
