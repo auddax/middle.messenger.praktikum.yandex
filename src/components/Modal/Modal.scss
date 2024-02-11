@@ -6,7 +6,40 @@
   border-radius: 5px;
   justify-content: space-between;
   align-items: center;
-  width: 400px;
+  width: 450px;
   background-color: $color-light-gray;
   cursor: auto;
+
+  .modal__form-controls {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    
+    .form-row {
+      width: 100%;
+
+      .modal__input {
+        &.input {
+          height: 40px;
+          text-align: center;
+          border-radius: 30px;
+          background-color: $color-middle-gray;
+          border: none;
+        }
+      
+        &::placeholder {
+          font-size: 1rem;
+          font-family: $font-primary;
+          color: $color-gray;
+          text-align: center;
+        }
+      
+        &:focus::placeholder {
+          color: transparent;
+          transition: all $transition-time;
+        }
+      }
+    }
+  }
 }
