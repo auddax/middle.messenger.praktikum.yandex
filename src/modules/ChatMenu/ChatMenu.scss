@@ -1,0 +1,46 @@
+.chat__menu {
+  position: absolute;
+  z-index: 100;
+  right: 28px;
+  top: 120px;
+  display: flex;
+  flex-direction: column;
+  color: $color-dark-blue;
+  background-color: $color-light-gray;
+  border-radius: 8px;
+  box-shadow: 5px 5px 15px 5px rgb(170 170 170 / 25%);
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  transition: all $transition-time;
+
+  .menu__list {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 16px;
+
+    .menu__item {
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+
+      svg {
+        font-size: 1.25rem;
+        margin: 0 8px 0 0;
+      }
+
+      &.red {
+        color: $color-red;
+      }
+      
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &.hidden {
+    display: none;
+  }
+}
