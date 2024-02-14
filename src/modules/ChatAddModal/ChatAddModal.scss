@@ -1,5 +1,10 @@
-.modal__form-controls {
-  .modal__input {
-    width: 250px;
+.chat-add__modal {
+  .modal__form-controls {
+    @include center-content;
+    flex-direction: column;
+  
+    .modal__input {
+      width: 250px;
+    }
   }
 }
