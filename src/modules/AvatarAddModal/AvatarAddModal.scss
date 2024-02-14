@@ -1,0 +1,36 @@
+.avatar-add__modal {
+  align-items: center;
+
+  .modal__form-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    .modal__label {
+      text-decoration: underline;
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin: 0 0 30px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .modal__add {
+    margin: 26px 0 0;
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    margin: 26px 0 0;
+    svg {
+      color: $color-green;
+      margin: 0 8px 0 0;
+      font-size: 1rem;
+    }
+  }
+}
