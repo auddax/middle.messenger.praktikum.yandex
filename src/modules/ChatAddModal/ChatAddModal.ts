@@ -12,7 +12,11 @@ class ChatAddModal extends Block {
         if (formProps) {
           const title = formProps.chat_name as string;
           const resp = await createChat(title);
-          if (resp) this.remove();
+          if (resp) {
+            const { id } = resp;
+            window.store.set({ currentChat: id });
+            this.remove();
+          }
         }
       },
     });
