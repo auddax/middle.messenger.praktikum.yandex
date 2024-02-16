@@ -7,7 +7,8 @@ class ChatAddModal extends Block {
   constructor() {
     super({
       focusOutHandler,
-      handleCreateChat: async () => {
+      handleCreateChat: async (e: Event) => {
+        e.preventDefault();
         const formProps = getFormData('chatNameForm');
         if (formProps) {
           const title = formProps.chat_name as string;

@@ -1,6 +1,6 @@
 {{# Backdrop}}
   {{# Modal modalClassName='chat-add__modal'}}
-    {{# Form formId='chatNameForm' formClassName='modal__form-controls'}}
+    {{# Form formId='chatNameForm' formClassName='modal__form-controls' onSubmit=this.handleCreateChat}}
       {{{ Input 
         label='Название чата' 
         className='modal__input' 
