@@ -14,7 +14,8 @@ class UserAddModal extends Block {
       error: false,
       notFound: false,
       focusOutHandler,
-      handleSearchUser: async () => {
+      handleSearchUser: async (e: Event) => {
+        e.preventDefault();
         const formProps = getFormData('userNameForm');
         if (formProps) {
           const login = formProps.user_name as string;

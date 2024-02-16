@@ -1,6 +1,6 @@
 {{# Backdrop }}
   {{# Modal modalClassName='user-delete__modal'}}
-    {{# Form formId='userNameForm' formClassName='modal__form-controls'}}
+    {{# Form formId='userNameForm' formClassName='modal__form-controls' onSubmit=this.handleSearchUser}}
       {{{ Input 
         label='Логин пользователя' 
         className='modal__input' 
