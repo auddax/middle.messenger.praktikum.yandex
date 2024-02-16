@@ -1,7 +1,7 @@
 import Block from 'src/core/Block';
 import { ChatAddModal } from 'src/modules/ChatAddModal';
 import { router } from 'src/router';
-import { getChats, initChat } from 'src/services/chat';
+import { getChats } from 'src/services/chat';
 import { ChatResponse, Props } from 'src/types';
 import { logout, setUser } from 'src/services/auth';
 import { initState } from 'src/main';
@@ -50,7 +50,6 @@ const ChatsList = connect(class extends Block {
 
   componentDidMount() {
     this.checkAuth();
-    // this.checkOpenChat();
   }
 
   checkAuth = async () => {
@@ -62,22 +61,19 @@ const ChatsList = connect(class extends Block {
       } else {
         router.go('/login');
       }
-    }
-  };
-
-  checkOpenChat = () => {
-    const { currentChat, userInfo, isOpenChat } = window.store.getState();
-    if (isOpenChat) return;
-    if (currentChat && userInfo?.id) {
-      initChat(Number(currentChat), userInfo.id);
+    } else {
+      await this.loadChats();
     }
   };
 
   loadChats = async () => {
-    const response = await getChats();
-    if (response) {
-      const chats = response.map((obj) => transformChatData(obj));
-      window.store.set({ chats });
+    const { chats } = window.store.getState();
+    if (!chats?.length) {
+      const response = await getChats();
+      if (response) {
+        const loadedChats = response.map((obj) => transformChatData(obj));
+        window.store.set({ chats: loadedChats });
+      }
     }
   };
 

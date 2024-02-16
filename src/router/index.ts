@@ -28,7 +28,7 @@ const routes: { [key: string]: string } = {
 };
 
 const router = new Router(rootQuery);
-router.use('/', pages.chatPage);
+router.use('/', pages.loginPage);
 
 Object.entries(pages).forEach(([key, block]) => {
   router.use(routes[key], block);
