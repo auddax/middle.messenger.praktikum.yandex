@@ -1,5 +1,7 @@
 import Block from 'src/core/Block';
-import { submitHandler, focusOutHandler } from 'src/utils/handlers';
+import { createUser } from 'src/services/auth';
+import { router } from 'src/router';
+import { focusOutHandler, getFormData } from 'src/utils/handlers';
 import template from './SignupCard.hbs?raw';
 
 const signupInputs = [
@@ -65,7 +67,13 @@ class SignupCard extends Block {
   constructor() {
     super({
       signupInputs,
-      submitHandler: () => submitHandler('signupForm'),
+      handleSubmit: async () => {
+        const formProps = getFormData('signupForm');
+        if (formProps) {
+          const response = await createUser(formProps);
+          if (response) router.go('/login');
+        }
+      },
     });
   }
 

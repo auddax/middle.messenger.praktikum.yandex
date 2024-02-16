@@ -8,8 +8,6 @@ class Router {
 
   private history: History | undefined;
 
-  private _currentRoute: null | Route = null;
-
   private readonly _rootQuery: string | undefined;
 
   constructor(rootQuery: string) {
@@ -19,7 +17,6 @@ class Router {
 
     this.routes = [];
     this.history = window.history;
-    this._currentRoute = null;
     this._rootQuery = rootQuery;
 
     Router.__instance = this;
@@ -34,9 +31,10 @@ class Router {
   }
 
   start() {
-    // window.onpopstate = ((event) => {
-    //   this._onRoute(event?.currentTarget?.location?.pathname);
-    // });
+    window.onpopstate = ((event: PopStateEvent) => {
+      const target = event.target as Window;
+      this._onRoute(target?.location?.pathname);
+    });
     this._onRoute(window.location.pathname);
   }
 
@@ -48,7 +46,6 @@ class Router {
       return;
     }
 
-    this._currentRoute = route;
     route.navigate(pathname);
   }
 

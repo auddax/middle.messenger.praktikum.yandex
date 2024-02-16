@@ -1,15 +1,17 @@
 import Block from 'src/core/Block';
-import { ChatModal } from 'src/modules/ChatModal';
+import { ChatAddModal } from 'src/modules/ChatAddModal';
 import { router } from 'src/router';
-import { getChats } from 'src/services/chat';
+import { getChats, initChat } from 'src/services/chat';
+import { ChatResponse, Props } from 'src/types';
+import { logout, setUser } from 'src/services/auth';
+import { initState } from 'src/main';
 import { connect } from 'src/utils/connect';
-import { Chat, ChatResponse } from 'src/types';
 import template from './ChatsList.hbs?raw';
 import config from '../../../config.json';
 
 const { rootQuery } = config;
 
-const modal = new ChatModal();
+const modal = new ChatAddModal();
 
 export const transformChatData = (data: ChatResponse) => ({
   id: data.id,
@@ -20,11 +22,15 @@ export const transformChatData = (data: ChatResponse) => ({
   unreadCount: data.unread_count,
 });
 
-const ChatsList = connect(class ChatsList extends Block {
-  chats: Chat[] = [];
-
-  constructor() {
+const ChatsList = connect(class extends Block {
+  constructor(props: Props) {
     super({
+      // chats: [],
+      handleLogout: async () => {
+        window.store.set(initState);
+        const response = await logout();
+        if (response) router.go('/login');
+      },
       goProfilePage: () => router.go('/settings'),
       handleCreateChat: () => {
         const modalElement = modal.render();
@@ -38,17 +44,34 @@ const ChatsList = connect(class ChatsList extends Block {
           });
         }
       },
+      ...props,
     });
   }
 
   componentDidMount() {
-    const { chats } = window.store.getState();
-    if (chats?.length) {
-      this.chats = chats;
-    } else {
-      this.loadChats();
-    }
+    this.checkAuth();
+    // this.checkOpenChat();
   }
+
+  checkAuth = async () => {
+    const { userInfo } = window.store.getState();
+    if (!userInfo) {
+      const response = await setUser();
+      if (response) {
+        this.loadChats();
+      } else {
+        router.go('/login');
+      }
+    }
+  };
+
+  checkOpenChat = () => {
+    const { currentChat, userInfo, isOpenChat } = window.store.getState();
+    if (isOpenChat) return;
+    if (currentChat && userInfo?.id) {
+      initChat(Number(currentChat), userInfo.id);
+    }
+  };
 
   loadChats = async () => {
     const response = await getChats();

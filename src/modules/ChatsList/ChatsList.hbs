@@ -1,8 +1,13 @@
 <div class='chats'>
   <div class='chats__controls'>
-    {{# Button type='link' page="profilePage" onClick=this.goProfilePage}}
-      Профиль
-    {{/Button}}
+    <div class='controls__nav'>
+      {{# Button type='link' page="profilePage" onClick=this.handleLogout}}
+        Выход
+      {{/Button}}
+      {{# Button type='link' page="profilePage" onClick=this.goProfilePage}}
+        Профиль
+      {{/Button}}
+    </div>
     {{# Form formId='searchForm' formClassName='page-chat__form-controls'}}
       {{{ Input 
         label='Поиск чата' 

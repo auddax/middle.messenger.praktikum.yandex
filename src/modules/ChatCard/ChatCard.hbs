@@ -1,19 +1,16 @@
-{{# Card cardClassName='card-user' key=this.chatId onClick=this.handleSelectChat}}
+{{# Card cardClassName='card-user' key=chatId onClick=handleSelectChat}}
   {{# Row}}
     {{# Col}}
-      {{{ Avatar avatarType='card-user' }}}
-    {{/Col}}
-    {{# Col}}
         {{# Title level='4' }}
-          {{ this.chatTitle }}
+          {{ chatTitle }}
         {{/Title}}
         <div class="card-user__message">
-          <span>{{ this.chatText }} </span>
+          <span>{{ chatText }} </span>
         </div>
     {{/Col}}
     {{# Col}}
-        <div class="card-user__date-time">{{ this.time }}</div>
-        {{{ Badge badgeText=this.unreadCount }}}
+        <div class="card-user__date-time">{{ time }}</div>
+        {{{ Badge badgeText=unreadCount }}}
     {{/Col}}
   {{/Row}}
 {{/Card}}

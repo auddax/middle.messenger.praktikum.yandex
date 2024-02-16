@@ -21,8 +21,11 @@
     "rules": {
         "import/prefer-default-export": "off",
         "no-underscore-dangle": "off",
+        "no-constructor-return": "off",
+        "quote-props": "off",
+        "class-methods-use-this": "off",
+        "no-restricted-syntax": "off",
         "@typescript-eslint/no-this-alias": "warn",
-        "class-methods-use-this": "warn",
         "func-names": "warn",
         "no-param-reassign": "warn"
     }

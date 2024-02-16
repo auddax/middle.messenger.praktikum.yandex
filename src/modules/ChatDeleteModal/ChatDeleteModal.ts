@@ -1,13 +1,12 @@
 import Block from 'src/core/Block';
 import { deleteChat } from 'src/services/chat';
-import { focusOutHandler } from 'src/utils/handlers';
-// import { deleteChat } from 'src/services/chat';
+import { Props } from 'src/types';
 import template from './ChatDeleteModal.hbs?raw';
 
 class ChatDeleteModal extends Block {
-  constructor() {
+  constructor(props: Props) {
     super({
-      focusOutHandler,
+      ...props,
       handleDeleteChat: async () => {
         const { currentChat } = window.store.getState();
         if (!currentChat) return;
@@ -15,12 +14,16 @@ class ChatDeleteModal extends Block {
         if (resp) {
           this.remove();
           this.cancelMenu();
-          window.store.set({ currentChat: null });
+          window.store.set({
+            currentChat: null,
+            isChatDeleteModalOpen: false,
+          });
         }
       },
       handleCancel: () => {
         this.remove();
         this.cancelMenu();
+        window.store.set({ isChatDeleteModalOpen: false });
       },
     });
   }
@@ -32,7 +35,7 @@ class ChatDeleteModal extends Block {
 
   cancelMenu() {
     const element = document.querySelector('.chat__menu') as HTMLElement;
-    element.classList.toggle('hidden');
+    element?.classList.toggle('hidden');
   }
 
   render() {

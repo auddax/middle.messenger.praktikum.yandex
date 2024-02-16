@@ -8,6 +8,10 @@ class LoginPage extends Block {
     });
   }
 
+  componentDidMount() {
+    console.log('LoginPage mounted');
+  }
+
   render() {
     return this.compile(template, this.props);
   }

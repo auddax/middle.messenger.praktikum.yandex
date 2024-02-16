@@ -41,6 +41,31 @@
       transition: all $transition-time;
     }
   }
+  
+  &.button-ghost {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    border: none;
+    background-color: transparent;
+    text-decoration: underline;
+    color: inherit;
+    transition: all $transition-time;
+
+    svg {
+      pointer-events: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: $color-light-gray;
+      transition: all $transition-time;
+    }
+  }
 
   &.button-link {
     border: none;
@@ -52,5 +77,9 @@
     &:hover {
       cursor: pointer;
     }
+  }
+
+  &.red {
+    background-color: $color-red;
   }
 }

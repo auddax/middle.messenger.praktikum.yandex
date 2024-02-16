@@ -6,6 +6,11 @@
   background-color: $color-middle-gray;
   font-weight: 300;
 
+  .avatar-text {
+    padding: 8px;
+    text-align: center;
+  }
+
   &.avatar-card-user {
     width: 47px;
     height: 47px;

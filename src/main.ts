@@ -15,10 +15,15 @@ declare global {
 
 }
 
-const initState: AppState = {
+export const initState: AppState = {
+  avatarPath: null,
   error: null,
-  user: null,
-  isOpenDialogChat: false,
+  userInfo: null,
+  currentChat: null,
+  isOpenChat: false,
+  isUserAddModalOpen: false,
+  isUserDeleteModalOpen: false,
+  isChatDeleteModalOpen: false,
   chats: [],
 };
 
@@ -37,3 +42,12 @@ Object.entries(Modules).forEach(([name, component]) => {
 });
 
 document.addEventListener('DOMContentLoaded', () => router.start());
+document.addEventListener('click', (e) => {
+  const target = e.target as HTMLElement;
+  if (target.className === 'backdrop') {
+    window.store.set({ isUserAddModalOpen: false });
+    window.store.set({ isUserDeleteModalOpen: false });
+    window.store.set({ isChatDeleteModalOpen: false });
+    target.remove();
+  }
+});

@@ -1,12 +1,12 @@
 .modal {
   @include center-content;
+
   padding: 2rem;
   flex-direction: column;
   border: 1px double #e5e5e5;
   border-radius: 5px;
   justify-content: space-between;
   align-items: center;
-  // width: 450px;
   background-color: $color-light-gray;
   cursor: auto;
 
