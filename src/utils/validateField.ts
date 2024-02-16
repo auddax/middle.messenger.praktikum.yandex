@@ -26,7 +26,7 @@ const rules = {
   },
 };
 
-export const validateField = (value: string, name: string) => {
+export const validateField = (value: string | FormDataEntryValue, name: string) => {
   let rule;
   switch (name) {
     case 'login':
@@ -50,13 +50,15 @@ export const validateField = (value: string, name: string) => {
       rule = rules.name;
       break;
     case 'message':
+    case 'chat_name':
+    case 'user_name':
       rule = rules.message;
       break;
     default:
       return { isValid: true, message: '' };
   }
   return {
-    isValid: rule?.regexp?.test(value),
+    isValid: rule?.regexp?.test(String(value)),
     message: rule?.message,
   };
 };

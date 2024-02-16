@@ -37,5 +37,13 @@
         Пользователи добавлены
       {{/Title}}
     {{/if}}
+    {{#if this.notFound}}
+      {{# Title level='4'}}
+        Пользователи не найдены
+      {{/Title}}
+    {{/if}}
+    {{#if this.error}}
+      <div class='validation-message'>Ошибка в отправке данных, проверьте выбор пользователя</div>
+    {{/if}}
   {{/Modal}}
 {{/Backdrop}}

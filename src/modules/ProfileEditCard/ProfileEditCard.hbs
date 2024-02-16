@@ -1,12 +1,7 @@
 {{# Card cardClassName='card-profile-edit'}}
-  {{# Form}}
-    <label for="profileEditAvatar">
-      {{{ Avatar userInitials='ИИ' avatarType='card-profile' }}}
-    </label>
-    <input type="file" id="profileEditAvatar" name="avatar" class="input-avatar">
-  {{/Form}}
+  {{{ Avatar avatarAltText='Загрузить аватар' avatarType='card-profile' onClick=this.handleSelectAvatar }}}
   {{# Title level='3'}}
-    Иван
+    {{ this.currentUserName }}
   {{/Title}}
   {{# Form formId='profileEditForm'}}
     {{#each profileEditItems}}
@@ -18,9 +13,12 @@
       }}}
     {{/each}}
     <div class="card-profile__controls">
-      {{# Button type='primary' page="profilePage" onClick=this.submitHandler }}
+      {{# Button type='primary' onClick=this.handleSubmitProfile }}
         Сохранить
       {{/Button}}
     </div>
   {{/Form}}
+  {{#if this.isAvatarAddModalOpen}}
+    {{{ AvatarAddModal }}}
+  {{/if}}
 {{/Card}}

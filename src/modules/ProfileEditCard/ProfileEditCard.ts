@@ -1,5 +1,7 @@
 import Block from 'src/core/Block';
-import { submitHandler } from 'src/utils/handlers';
+import { editUserProfile } from 'src/services/user';
+import { router } from 'src/router';
+import { getFormData } from 'src/utils/handlers';
 import template from './ProfileEditCard.hbs?raw';
 
 const profileEditItems = [
@@ -27,8 +29,29 @@ class ProfileEditCard extends Block {
   constructor() {
     super({
       profileEditItems,
-      submitHandler: () => submitHandler('profileEditForm'),
+      isAvatarAddModalOpen: false,
+      handleSubmitProfile: async () => {
+        const formProps = getFormData('profileEditForm');
+        if (formProps) {
+          const response = await editUserProfile(formProps);
+          if (response) {
+            window.store.set({ userInfo: response });
+            router.go('/settings');
+          }
+        }
+      },
+      handleSelectAvatar: () => {
+        this.setProps({ isAvatarAddModalOpen: true });
+      },
+      currentUserName: null,
     });
+  }
+
+  componentDidMount() {
+    const { userInfo } = window.store.getState();
+    if (userInfo?.firstName) {
+      this.props.currentUserName = userInfo.firstName;
+    }
   }
 
   render() {

@@ -4,25 +4,26 @@
   flex-direction: column;
   justify-content: space-between;
   
-  .chat__form-controls {
-    border-top: 1px solid $color-middle-gray;
-    padding: 10px 0 0;
-  }
-  
   .chat__messages {
     overflow-y: scroll;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    gap: 20px;
-    height: 100%;
-    padding: 0 0 30px;
   }
   
   .chat__start-message {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     font-weight: 500;
-    font-size: 0.75rem;
-    color: $color-dark-gray;        
+    font-size: 1.5rem;
+    color: $color-middle-gray;
+    margin: auto;
+
+    svg {
+      margin: 0 auto 16px;
+    }
   }
   
     .chat__form-controls {

@@ -1,8 +1,9 @@
 .chat-delete__modal {
+  @include center-content;
+
   width: 300px;
   height: 200px;
   gap: 56px;
-  @include center-content;
 
   .modal__form-controls {
     display: flex;

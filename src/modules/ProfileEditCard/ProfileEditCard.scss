@@ -1,9 +1,13 @@
 .card-profile-edit {
   .avatar-card-profile {
     margin: 0 auto 20px;
+    font-size: 1rem;
 
     &:hover {
       cursor: pointer;
+      background-color: rgba(0 0 0 / 55%);
+      transition: all $transition-time;
+      color: $color-white;
     }
   }
 

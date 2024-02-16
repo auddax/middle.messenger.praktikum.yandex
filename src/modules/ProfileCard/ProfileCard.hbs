@@ -1,7 +1,7 @@
 {{# Card cardClassName='card-profile'}}
-  {{{ Avatar userInitials='ИИ' avatarType='card-profile' }}}
+  {{{ Avatar avatarType='card-profile' path=this.avatarPath }}}
   {{# Title level='3'}}
-    Иван
+    {{ this.currentUserName }}
   {{/Title}}
   {{#each profileItems}}
     {{{ ProfileItem
@@ -10,10 +10,10 @@
     }}}
   {{/each}}
   <div class="card-profile__controls">
-    {{# Button type='primary' page="profileEditPage"}}
+    {{# Button type='primary' onClick=this.goProfileEditPage }}
       Изменить данные
     {{/Button}}
-    {{# Button type='primary' page="profileEditPasswordPage"}}
+    {{# Button type='primary' onClick=this.goProfileEditPasswordPage }}
       Изменить пароль
     {{/Button}}
   </div>

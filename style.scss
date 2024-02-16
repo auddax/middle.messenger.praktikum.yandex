@@ -11,16 +11,27 @@
 
 // Components
 @import '/src/components/Avatar/Avatar';
+@import '/src/components/Backdrop/Backdrop';
 @import '/src/components/Badge/Badge';
 @import '/src/components/Title/Title';
 @import '/src/components/Input/Input';
 @import '/src/components/Button/Button';
 @import '/src/components/Card/Card';
 @import '/src/components/Message/Message';
+@import '/src/components/Modal/Modal';
 
 // Modules
 @import 'src/modules/LoginCard/LoginCard';
-@import 'src/modules/UserCard/UserCard';
+@import 'src/modules/Chat/Chat';
+@import 'src/modules/ChatHeader/ChatHeader';
+@import 'src/modules/ChatMenu/ChatMenu';
+@import 'src/modules/ChatsList/ChatsList';
+@import 'src/modules/ChatCard/ChatCard';
+@import 'src/modules/ChatAddModal/ChatAddModal';
+@import 'src/modules/ChatDeleteModal/ChatDeleteModal';
+@import 'src/modules/UserAddModal/UserAddModal';
+@import 'src/modules/UserDeleteModal/UserDeleteModal';
+@import 'src/modules/AvatarAddModal/AvatarAddModal';
 @import 'src/modules/ProfileItem/ProfileItem';
 @import 'src/modules/ProfileEditItem/ProfileEditItem';
 @import 'src/modules/ProfileEditPassword/ProfileEditPassword';

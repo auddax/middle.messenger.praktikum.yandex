@@ -1,4 +1,3 @@
-import { isEqual } from 'src/utils/isEqual';
 import Block from 'src/core/Block';
 import { Props } from 'src/types';
 
@@ -26,7 +25,7 @@ class Route {
   }
 
   match(pathname: string) {
-    return isEqual(pathname, this._pathname);
+    return pathname === this._pathname;
   }
 
   render() {

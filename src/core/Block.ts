@@ -1,19 +1,9 @@
 import { v4 as uuidv4 } from 'uuid';
 import Handlebars from 'handlebars';
-import EventBus from './EventBus';
-
-type Props = {
-  [key: string | symbol]: unknown | Block;
-  events?: Events;
-};
-
-type Child = { embed: (content: DocumentFragment) => void };
-
-type Events = { [key: string]: (() => void) | undefined };
-
-type Children = { [key: string]: Block };
-
-type Refs = { [key: string]: Element | Block };
+import EventBus from 'src/core/EventBus';
+import {
+  Props, Child, Children, Refs,
+} from 'src/types';
 
 class Block {
   protected props: Props;
@@ -31,6 +21,7 @@ class Block {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
+    FLOW_CWU: 'flow:component-will-unmount',
     FLOW_CDU: 'flow:component-did-update',
     FLOW_RENDER: 'flow:render',
   };
@@ -87,6 +78,7 @@ class Block {
   private _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
+    eventBus.on(Block.EVENTS.FLOW_CWU, this._componentWillUnmount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
@@ -128,16 +120,28 @@ class Block {
   }
 
   private _componentDidMount() {
+    this._checkInDom();
     this.componentDidMount();
-
-    Object.values(this.children).forEach((child) => {
-      child.dispatchComponentDidMount();
-    });
   }
 
   private _componentDidUpdate() {
     const response = this.componentDidUpdate();
     if (response) this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
+  }
+
+  private _componentWillUnmount() {
+    this.componentWillUnmount();
+  }
+
+  private _checkInDom() {
+    const elementInDOM = document.body.contains(this._element);
+
+    if (elementInDOM) {
+      setTimeout(() => this._checkInDom(), 1000);
+      return;
+    }
+
+    this.eventBus.emit(Block.EVENTS.FLOW_CWU, this.props);
   }
 
   compile(template: string, context: { [key: string]: unknown }) {
@@ -167,11 +171,17 @@ class Block {
   }
 
   getContent() {
+    setTimeout(() => {
+      this.dispatchComponentDidMount();
+    }, 100);
     return this.element;
   }
 
   dispatchComponentDidMount() {
     this.eventBus.emit(Block.EVENTS.FLOW_CDM);
+    // Object.values(this.children).forEach((child) => {
+    //   child.dispatchComponentDidMount();
+    // });
   }
 
   componentDidUpdate() {
@@ -184,6 +194,8 @@ class Block {
 
   componentDidMount() {}
 
+  componentWillUnmount() {}
+
   setProps = (nextProps: { [key: string]: unknown }) => {
     if (!nextProps) {
       return;
@@ -195,18 +207,6 @@ class Block {
 
   get element() {
     return this._element;
-  }
-
-  show() {
-    if (this._element) {
-      this._element.style.display = 'block';
-    }
-  }
-
-  hide() {
-    if (this._element) {
-      this._element.style.display = 'none';
-    }
   }
 }
 

@@ -89,18 +89,9 @@ export const initChat = async (chatId: number, userId: number | string) => {
     }
   };
 
-  const clearChat = () => {
-    const chatMessagesList = document.getElementById('chatMessagesList');
-    chatMessagesList?.replaceChildren();
-    const buttonElement = document.getElementById('sendMessageButton');
-    const formElement = document.getElementById('messageForm');
-    buttonElement?.removeEventListener('click', handleSubmitMessage);
-    formElement?.removeEventListener('submit', handleSubmitMessage);
-  };
-
   socket.addEventListener('open', () => {
     console.log('Соединение установлено');
-    clearChat();
+    window.store.set({ isOpenChat: true });
 
     const buttonElement = document.getElementById('sendMessageButton');
     const formElement = document.getElementById('messageForm');
@@ -119,7 +110,7 @@ export const initChat = async (chatId: number, userId: number | string) => {
     } else {
       console.log('Обрыв соединения');
     }
-
+    window.store.set({ isOpenChat: false });
     console.log(`Код: ${event.code} | Причина: ${event.reason}`);
   });
 

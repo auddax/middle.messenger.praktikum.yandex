@@ -11,14 +11,18 @@ class UserDeleteModal extends Block {
       users: [],
       selectedUsers: [],
       success: false,
+      error: false,
+      notFound: false,
       focusOutHandler,
       handleSearchUser: async () => {
         const formProps = getFormData('userNameForm');
         if (formProps) {
           const login = formProps.user_name as string;
           const resp = await searchUser(login);
-          if (resp) {
-            this.setProps({ users: resp });
+          if (resp?.length) {
+            this.setProps({ notFound: false, users: resp });
+          } else {
+            this.setProps({ notFound: true });
           }
         }
       },
@@ -29,10 +33,10 @@ class UserDeleteModal extends Block {
         if (selectedUsers?.length && currentChat) {
           const response = await deleteUsersFromChat(selectedUsers, currentChat);
           if (response) {
-            this.setProps({ success: true });
+            this.setProps({ error: false, success: true });
           }
         } else {
-          throw new Error('invalid params');
+          this.setProps({ error: true, success: false });
         }
       },
       handleSelectUser: (e: Event) => {
