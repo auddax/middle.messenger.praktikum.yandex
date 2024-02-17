@@ -4,45 +4,83 @@ import { transformChatData } from 'src/modules/ChatsList/ChatsList';
 import { handleError } from 'src/utils/handlers';
 
 export const getChats = async () => {
-  const resp = await ChatAPI.getChats() as RequestResult;
-  if (resp.status !== 200) handleError(resp);
-  const responseObj = JSON.parse(resp.response);
+  let responseObj;
+  try {
+    const resp = await ChatAPI.getChats() as RequestResult;
+    if (resp.status !== 200) handleError(resp);
+    responseObj = JSON.parse(resp.response);
+  } catch (error) {
+    console.warn(error);
+  }
   const chats = responseObj.map((obj: ChatResponse) => transformChatData(obj));
   window.store.set({ chats });
 };
 
 export const createChat = async (title: string) => {
-  const resp = await ChatAPI.createChat({ title }) as RequestResult;
-  if (resp.status !== 200) handleError(resp);
-  await getChats();
-  const responseObj = JSON.parse(resp.response);
+  let responseObj;
+  try {
+    const resp = await ChatAPI.createChat({ title }) as RequestResult;
+    if (resp.status !== 200) handleError(resp);
+    await getChats();
+    responseObj = JSON.parse(resp.response);
+  } catch (error) {
+    console.warn(error);
+  }
   return responseObj;
 };
 
 export const deleteChat = async (chatId: number): Promise<ChatResponse> => {
-  const resp = await ChatAPI.deleteChat({ chatId }) as RequestResult;
-  if (resp.status !== 200) handleError(resp);
-  const responseObj = JSON.parse(resp.response);
+  let responseObj;
+  try {
+    const resp = await ChatAPI.deleteChat({ chatId }) as RequestResult;
+    if (resp.status !== 200) handleError(resp);
+    responseObj = JSON.parse(resp.response);
+  } catch (error) {
+    console.warn(error);
+  }
   return responseObj;
 };
 
-export const addUsersToChat = async (users: number[], chatId: number): Promise<string> => {
-  const resp = await ChatAPI.addUsersToChat({ users, chatId }) as RequestResult;
-  if (resp.status !== 200) handleError(resp);
-  return resp.response;
+export const addUsersToChat = async (
+  users: number[],
+  chatId: number,
+): Promise<string | undefined> => {
+  let response;
+  try {
+    const resp = await ChatAPI.addUsersToChat({ users, chatId }) as RequestResult;
+    if (resp.status !== 200) handleError(resp);
+    response = resp.response;
+  } catch (error) {
+    console.warn(error);
+  }
+  return response;
 };
 
-export const deleteUsersFromChat = async (users: number[], chatId: number): Promise<string> => {
-  const resp = await ChatAPI.deleteUsersFromChat({ users, chatId }) as RequestResult;
-  if (resp.status !== 200) handleError(resp);
-  return resp.response;
+export const deleteUsersFromChat = async (
+  users: number[],
+  chatId: number,
+): Promise<string | undefined> => {
+  let response;
+  try {
+    const resp = await ChatAPI.deleteUsersFromChat({ users, chatId }) as RequestResult;
+    if (resp.status !== 200) handleError(resp);
+    response = resp.response;
+  } catch (error) {
+    console.warn(error);
+  }
+  return response;
 };
 
-export const getChatToken = async (id: number): Promise<string> => {
-  const resp = await ChatAPI.getChatToken(id) as RequestResult;
-  if (resp.status !== 200) handleError(resp);
-  const responseObj = JSON.parse(resp.response);
-  return responseObj.token;
+export const getChatToken = async (id: number): Promise<string | undefined> => {
+  let responseObj;
+  try {
+    const resp = await ChatAPI.getChatToken(id) as RequestResult;
+    if (resp.status !== 200) handleError(resp);
+    responseObj = JSON.parse(resp.response);
+  } catch (error) {
+    console.warn(error);
+  }
+  return responseObj?.token;
 };
 
 export const initChat = async (chatId: number, userId: number | string) => {
@@ -124,5 +162,9 @@ export const initChat = async (chatId: number, userId: number | string) => {
     } else {
       renderMessage(data);
     }
+  });
+
+  socket.addEventListener('error', (event) => {
+    console.warn(event);
   });
 };

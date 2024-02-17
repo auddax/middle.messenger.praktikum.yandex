@@ -1,6 +1,7 @@
 import Block from 'src/core/Block';
 import { focusOutHandler, getFormData } from 'src/utils/handlers';
-import { createChat } from 'src/services/chat';
+import { createChat, initChat } from 'src/services/chat';
+import { getCurrentChatName } from 'src/utils/helpers';
 import template from './ChatAddModal.hbs?raw';
 
 class ChatAddModal extends Block {
@@ -15,10 +16,16 @@ class ChatAddModal extends Block {
           const resp = await createChat(title);
           if (resp) {
             const { id } = resp;
+            const currentChatName = getCurrentChatName(Number(id));
             window.store.set({
+              currentChatName,
               currentChat: id,
               isChatAddModalOpen: false,
             });
+            const { userInfo } = window.store.getState();
+            if (userInfo && userInfo.id) {
+              initChat(id, userInfo.id);
+            }
           }
         }
       },
