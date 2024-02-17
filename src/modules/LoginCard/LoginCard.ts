@@ -53,7 +53,7 @@ class LoginCard extends Block {
   };
 
   protected render() {
-    return template
+    return template;
   }
 }
 

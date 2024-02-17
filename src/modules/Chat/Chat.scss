@@ -28,6 +28,8 @@
       display: flex;
       justify-content: space-between;
       gap: 10px;
+      border-top: 1px solid $color-middle-gray;
+      padding: 10px 0 0;
       
       .form-row {
         width: 100%;
