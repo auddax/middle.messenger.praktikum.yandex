@@ -31,13 +31,15 @@ export const getUser = async () => {
 };
 
 export const setUser = async () => {
+  let user;
   const response = await getUser();
   if (response) {
     const avatarPath = `https://ya-praktikum.tech/api/v2/resources${response.avatar}`;
-    window.store.set({
+    user = {
       avatarPath,
       userInfo: response,
-    });
+    };
+    window.store.set({ ...user });
   }
-  return response;
+  return user;
 };

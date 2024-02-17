@@ -1,6 +1,8 @@
 import Block from 'src/core/Block';
 import { router } from 'src/router';
 import { connect } from 'src/utils/connect';
+import { setUser } from 'src/services/auth';
+import { User } from 'src/types';
 import template from './ProfileCard.hbs?raw';
 
 type ProfileItem = {
@@ -53,20 +55,31 @@ const ProfileCard = connect(class extends Block {
     });
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    const user = await this.checkUser();
+    this.setProfile(user?.userInfo, user?.avatarPath);
+  }
+
+  async checkUser() {
     const { userInfo, avatarPath } = window.store.getState();
-    if (userInfo) {
-      const items = this.props.profileItems as ProfileItem[];
-      const currentUserInfo = items.map((item: ProfileItem) => ({
-        ...item,
-        profileInfoText: userInfo[item.profileInfoName],
-      }));
-      this.setProps({
-        avatarPath,
-        profileItems: currentUserInfo,
-        currentUserName: userInfo.first_name,
-      });
+    if (!userInfo || !avatarPath) {
+      const resp = await setUser();
+      return resp;
     }
+    return { userInfo, avatarPath };
+  }
+
+  setProfile(userInfo: User, avatarPath: string | undefined) {
+    const items = this.props.profileItems as ProfileItem[];
+    const currentUserInfo = items.map((item: ProfileItem) => ({
+      ...item,
+      profileInfoText: userInfo[item.profileInfoName],
+    }));
+    this.setProps({
+      avatarPath,
+      profileItems: currentUserInfo,
+      currentUserName: userInfo.first_name,
+    });
   }
 
   protected render() {
