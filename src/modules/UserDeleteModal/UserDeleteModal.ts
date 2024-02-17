@@ -63,8 +63,8 @@ class UserDeleteModal extends Block {
     element.classList.toggle('hidden');
   }
 
-  render() {
-    return this.compile(template, this.props);
+  protected render() {
+    return template;
   }
 }
 

@@ -24,19 +24,24 @@ class Route {
     }
   }
 
+  leave() {
+    if (this._block) {
+      this._block.hide();
+    }
+  }
+
   match(pathname: string) {
     return pathname === this._pathname;
   }
 
   render() {
-    this._block = new this._blockClass();
-    if (!this._props.rootQuery) return;
-    const container = document.getElementById(this._props.rootQuery as string);
-    if (container?.firstElementChild) {
-      container?.firstElementChild?.replaceWith(this._block.render());
-    } else {
-      container?.append(this._block.render());
+    if (!this._block) {
+      this._block = new this._blockClass(this._props);
+      this.render();
+      return;
     }
+
+    this._block.show();
   }
 }
 

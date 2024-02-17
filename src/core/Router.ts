@@ -10,6 +10,8 @@ class Router {
 
   private readonly _rootQuery: string | undefined;
 
+  private _currentRoute: Route | undefined;
+
   constructor(rootQuery: string) {
     if (Router.__instance) {
       return Router.__instance;
@@ -45,6 +47,12 @@ class Router {
       if (route) route.render();
       return;
     }
+
+    if (this._currentRoute && this._currentRoute !== route) {
+      this._currentRoute.leave();
+    }
+
+    this._currentRoute = route;
 
     route.navigate(pathname);
   }

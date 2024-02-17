@@ -20,9 +20,11 @@ export const initState: AppState = {
   error: null,
   userInfo: null,
   currentChat: null,
+  currentChatName: null,
   isOpenChat: false,
   isUserAddModalOpen: false,
   isUserDeleteModalOpen: false,
+  isChatAddModalOpen: false,
   isChatDeleteModalOpen: false,
   chats: [],
 };
@@ -45,9 +47,12 @@ document.addEventListener('DOMContentLoaded', () => router.start());
 document.addEventListener('click', (e) => {
   const target = e.target as HTMLElement;
   if (target.className === 'backdrop') {
-    window.store.set({ isUserAddModalOpen: false });
-    window.store.set({ isUserDeleteModalOpen: false });
-    window.store.set({ isChatDeleteModalOpen: false });
+    window.store.set({
+      isUserAddModalOpen: false,
+      isUserDeleteModalOpen: false,
+      isChatAddModalOpen: false,
+      isChatDeleteModalOpen: false,
+    });
     target.remove();
   }
 });

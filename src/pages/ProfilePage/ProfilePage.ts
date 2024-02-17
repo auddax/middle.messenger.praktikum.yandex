@@ -9,12 +9,8 @@ class ProfilePage extends Block {
     });
   }
 
-  componentDidMount() {
-    console.log('mounted Profile page');
-  }
-
-  render() {
-    return this.compile(template, this.props);
+  protected render() {
+    return template;
   }
 }
 

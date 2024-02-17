@@ -12,8 +12,8 @@ const Chat = connect(class extends Block {
     });
   }
 
-  render() {
-    return this.compile(template, this.props);
+  protected render() {
+    return template;
   }
 });
 

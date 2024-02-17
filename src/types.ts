@@ -19,10 +19,12 @@ export type AppState = {
   error: Error | null,
   avatarPath: string | null,
   userInfo: User | null,
+  currentChatName: string | null,
   currentChat: number | null,
   isOpenChat: boolean,
   isUserAddModalOpen: boolean,
   isUserDeleteModalOpen: boolean;
+  isChatAddModalOpen: boolean;
   isChatDeleteModalOpen: boolean,
   chats: Chat[]
 };

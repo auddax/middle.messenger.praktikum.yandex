@@ -52,8 +52,8 @@ class LoginCard extends Block {
     router.go('/messenger');
   };
 
-  render() {
-    return this.compile(template, this.props);
+  protected render() {
+    return template
   }
 }
 
