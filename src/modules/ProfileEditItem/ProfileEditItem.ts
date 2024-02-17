@@ -18,7 +18,7 @@ class ProfileEditItem extends Block {
   }
 
   render() {
-    return this.compile(template, this.props);
+    return template;
   }
 }
 

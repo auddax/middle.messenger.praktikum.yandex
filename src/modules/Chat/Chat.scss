@@ -7,9 +7,6 @@
   .chat__messages {
     overflow-y: scroll;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
   }
   
   .chat__start-message {

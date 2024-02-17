@@ -4,6 +4,9 @@ import EventBus from 'src/core/EventBus';
 import {
   Props, Child, Children, Refs,
 } from 'src/types';
+import config from '../../config.json';
+
+const { rootQuery } = config;
 
 class Block {
   protected props: Props;
@@ -102,7 +105,7 @@ class Block {
   }
 
   private _render() {
-    const fragment = this.render();
+    const fragment = this.compile(this.render(), this.props);
     const newElement = fragment.firstElementChild as HTMLElement;
 
     this._removeEvents();
@@ -179,17 +182,14 @@ class Block {
 
   dispatchComponentDidMount() {
     this.eventBus.emit(Block.EVENTS.FLOW_CDM);
-    // Object.values(this.children).forEach((child) => {
-    //   child.dispatchComponentDidMount();
-    // });
   }
 
   componentDidUpdate() {
     return true;
   }
 
-  render(): DocumentFragment {
-    return new DocumentFragment();
+  protected render(): string {
+    return '';
   }
 
   componentDidMount() {}
@@ -207,6 +207,26 @@ class Block {
 
   get element() {
     return this._element;
+  }
+
+  public hide() {
+    const app = document.getElementById(rootQuery);
+    if (app && app?.firstElementChild) {
+      app?.firstElementChild?.replaceWith('');
+    }
+  }
+
+  public show() {
+    const app = document.getElementById(rootQuery);
+
+    if (!app?.firstElementChild) {
+      app?.append(document.createElement('div'));
+    }
+
+    const htmlElement = this.getContent();
+    if (htmlElement && app?.firstElementChild) {
+      app?.firstElementChild?.replaceWith(htmlElement);
+    }
   }
 }
 

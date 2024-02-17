@@ -3,21 +3,18 @@ import { RequestResult, ChatResponse, SocketResponse } from 'src/types';
 import { transformChatData } from 'src/modules/ChatsList/ChatsList';
 import { handleError } from 'src/utils/handlers';
 
-export const getChats = async (): Promise<ChatResponse[]> => {
+export const getChats = async () => {
   const resp = await ChatAPI.getChats() as RequestResult;
   if (resp.status !== 200) handleError(resp);
   const responseObj = JSON.parse(resp.response);
-  return responseObj;
+  const chats = responseObj.map((obj: ChatResponse) => transformChatData(obj));
+  window.store.set({ chats });
 };
 
 export const createChat = async (title: string) => {
   const resp = await ChatAPI.createChat({ title }) as RequestResult;
   if (resp.status !== 200) handleError(resp);
-  const chatsResponse = await getChats();
-  if (chatsResponse) {
-    const chats = chatsResponse.map((obj) => transformChatData(obj));
-    window.store.set({ chats });
-  }
+  await getChats();
   const responseObj = JSON.parse(resp.response);
   return responseObj;
 };

@@ -10,7 +10,8 @@ class ChatCard extends Block {
         const target = e.currentTarget as HTMLElement;
         const { key } = target.dataset;
         if (key) {
-          window.store.set({ currentChat: Number(key) });
+          const currentChatName = this.getCurrentChatName(Number(key));
+          window.store.set({ currentChatName, currentChat: Number(key) });
           const { userInfo } = window.store.getState();
           if (userInfo && userInfo.id) {
             initChat(Number(key), userInfo.id);
@@ -21,8 +22,20 @@ class ChatCard extends Block {
     });
   }
 
-  render() {
-    return this.compile(template, this.props);
+  getCurrentChatName(currentChat: number) {
+    const { chats } = window.store.getState();
+    let currentChatName;
+    if (chats?.length && currentChat) {
+      const chat = chats.find((c) => currentChat === c.id);
+      currentChatName = chat?.title;
+    } else {
+      currentChatName = 'Чат не выбран';
+    }
+    return currentChatName;
+  }
+
+  protected render() {
+    return template;
   }
 }
 

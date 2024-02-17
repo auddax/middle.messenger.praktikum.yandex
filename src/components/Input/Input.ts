@@ -22,8 +22,8 @@ class Input extends Block {
     });
   }
 
-  render() {
-    return this.compile(template, this.props);
+  protected render() {
+    return template;
   }
 }
 

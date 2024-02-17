@@ -15,21 +15,18 @@ class ChatAddModal extends Block {
           const resp = await createChat(title);
           if (resp) {
             const { id } = resp;
-            window.store.set({ currentChat: id });
-            this.remove();
+            window.store.set({
+              currentChat: id,
+              isChatAddModalOpen: false,
+            });
           }
         }
       },
     });
   }
 
-  remove() {
-    const modal = document.querySelector('.backdrop');
-    if (modal) modal.remove();
-  }
-
-  render() {
-    return this.compile(template, this.props);
+  protected render() {
+    return template;
   }
 }
 

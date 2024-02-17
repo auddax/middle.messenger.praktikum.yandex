@@ -12,10 +12,8 @@ const ErrorPage = connect(class extends Block {
     });
   }
 
-  render() {
-    const { error } = window.store.getState();
-    const { props } = this;
-    return this.compile(template, { ...props, ...error });
+  protected render() {
+    return template;
   }
 });
 

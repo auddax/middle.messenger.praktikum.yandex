@@ -1,5 +1,5 @@
 import Block from 'src/core/Block';
-import { deleteChat } from 'src/services/chat';
+import { deleteChat, getChats } from 'src/services/chat';
 import { Props } from 'src/types';
 import template from './ChatDeleteModal.hbs?raw';
 
@@ -12,7 +12,7 @@ class ChatDeleteModal extends Block {
         if (!currentChat) return;
         const resp = await deleteChat(currentChat);
         if (resp) {
-          this.remove();
+          await getChats();
           this.cancelMenu();
           window.store.set({
             currentChat: null,
@@ -21,16 +21,10 @@ class ChatDeleteModal extends Block {
         }
       },
       handleCancel: () => {
-        this.remove();
         this.cancelMenu();
         window.store.set({ isChatDeleteModalOpen: false });
       },
     });
-  }
-
-  remove() {
-    const modal = document.querySelector('.backdrop');
-    if (modal) modal.remove();
   }
 
   cancelMenu() {
@@ -38,8 +32,8 @@ class ChatDeleteModal extends Block {
     element?.classList.toggle('hidden');
   }
 
-  render() {
-    return this.compile(template, this.props);
+  protected render() {
+    return template;
   }
 }
 
