@@ -4,9 +4,6 @@ import EventBus from 'src/core/EventBus';
 import {
   Props, Child, Children, Refs,
 } from 'src/types';
-import config from '../../config.json';
-
-const { rootQuery } = config;
 
 class Block {
   protected props: Props;
@@ -170,7 +167,7 @@ class Block {
   getContent() {
     setTimeout(() => {
       this.dispatchComponentDidMount();
-    }, 10);
+    }, 100);
     return this.element;
   }
 
@@ -203,24 +200,12 @@ class Block {
     return this._element;
   }
 
-  public hide() {
-    const app = document.getElementById(rootQuery);
-    if (app && app?.firstElementChild) {
-      app?.firstElementChild?.replaceWith('');
-    }
+  show() {
+    this.getContent()!.style.display = 'block';
   }
 
-  public show() {
-    const app = document.getElementById(rootQuery);
-
-    if (!app?.firstElementChild) {
-      app?.append(document.createElement('div'));
-    }
-
-    const htmlElement = this.getContent();
-    if (htmlElement && app?.firstElementChild) {
-      app?.firstElementChild?.replaceWith(htmlElement);
-    }
+  hide() {
+    this.getContent()!.style.display = 'none';
   }
 }
 
