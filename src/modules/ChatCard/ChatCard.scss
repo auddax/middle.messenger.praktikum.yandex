@@ -1,4 +1,4 @@
-.card-user {
+.chat-card {
   padding: 12px 0;
   border-bottom: 1px solid $color-middle-gray;
   
@@ -11,6 +11,10 @@
       &:first-child {
         justify-content: center;
       }
+
+      &:last-child {
+        margin: 0 0 0 auto;
+      }
     }
   }
 
@@ -18,17 +22,17 @@
     margin: 0 0 4px;
   }
 
-  .avatar-card-user {
-    margin: 0 10px 0 0;
+  .avatar-chat-card {
+    margin: 0 16px 0 0;
   }
 
-  .card-user__message {
+  .chat-card__message {
     font-weight: 500;
     font-size: 0.75rem;
     color: $color-dark-gray;
   }
 
-  .card-user__date-time {
+  .chat-card__date-time {
     font-size: 0.5rem;
     font-weight: 500;
     color: $color-dark-gray
