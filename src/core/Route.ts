@@ -1,4 +1,5 @@
 import Block from 'src/core/Block';
+import renderDOM from 'src/utils/renderDOM';
 import { Props } from 'src/types';
 
 class Route {
@@ -37,7 +38,8 @@ class Route {
   render() {
     if (!this._block) {
       this._block = new this._blockClass(this._props);
-      this.render();
+      const rootQuery = this._props.rootQuery as string;
+      renderDOM(rootQuery, this._block);
       return;
     }
 
