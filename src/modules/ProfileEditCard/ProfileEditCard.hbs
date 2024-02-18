@@ -1,5 +1,10 @@
 {{# Card cardClassName='card-profile-edit'}}
-  {{{ Avatar avatarAltText='Загрузить аватар' avatarType='card-profile' onClick=this.handleSelectAvatar }}}
+  {{{ Avatar 
+    avatarAltText='Загрузить аватар' 
+    avatarType='card-profile' 
+    onClick=this.handleSelectAvatar
+    path=this.avatarPath
+  }}}
   {{# Title level='3'}}
     {{ this.currentUserName }}
   {{/Title}}
@@ -10,6 +15,7 @@
         htmlType=this.htmlType 
         name=this.name 
         id=this.id
+        value=this.value
       }}}
     {{/each}}
     <div class="card-profile__controls">
@@ -18,7 +24,7 @@
       {{/Button}}
     </div>
   {{/Form}}
-  {{#if this.isAvatarAddModalOpen}}
+  {{#if isAvatarAddModalOpen}}
     {{{ AvatarAddModal }}}
   {{/if}}
 {{/Card}}

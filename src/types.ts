@@ -26,6 +26,7 @@ export type AppState = {
   isUserDeleteModalOpen: boolean;
   isChatAddModalOpen: boolean;
   isChatDeleteModalOpen: boolean,
+  isAvatarAddModalOpen: boolean,
   chats: Chat[],
   messages: ChatMessage[],
   socket: WebSocket | null,

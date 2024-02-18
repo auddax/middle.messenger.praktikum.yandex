@@ -28,20 +28,11 @@ class AvatarAddModal extends Block {
           if (resp) {
             this.setProps({ success: true });
             await setUser();
+            window.store.set({ isAvatarAddModalOpen: false });
           }
         }
       },
     });
-  }
-
-  remove() {
-    const modal = document.querySelector('.backdrop');
-    if (modal) modal.remove();
-  }
-
-  cancelMenu() {
-    const element = document.querySelector('.chat__menu') as HTMLElement;
-    element.classList.toggle('hidden');
   }
 
   protected render() {

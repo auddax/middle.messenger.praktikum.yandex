@@ -26,6 +26,7 @@ export const initState: AppState = {
   isUserDeleteModalOpen: false,
   isChatAddModalOpen: false,
   isChatDeleteModalOpen: false,
+  isAvatarAddModalOpen: false,
   socket: null,
   chats: [],
   messages: [],
@@ -54,6 +55,7 @@ document.addEventListener('click', (e) => {
       isUserDeleteModalOpen: false,
       isChatAddModalOpen: false,
       isChatDeleteModalOpen: false,
+      isAvatarAddModalOpen: false,
     });
     target.remove();
   }
