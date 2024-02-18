@@ -63,6 +63,7 @@ type ChatMessage = {
 
 export type Chat = {
   id: number,
+  avatarPath: string | undefined,
   title: string,
   avatar: Nullable<string>,
   content: string | undefined,

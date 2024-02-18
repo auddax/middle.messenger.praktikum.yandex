@@ -8,6 +8,7 @@ import template from './ChatsList.hbs?raw';
 
 export const transformChatData = (data: ChatResponse) => ({
   id: data.id,
+  avatarPath: data?.avatar ? `https://ya-praktikum.tech/api/v2/resources${data.avatar}` : '',
   title: data.title,
   avatar: data.avatar,
   content: data.last_message?.content,
