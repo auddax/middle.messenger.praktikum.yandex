@@ -26,7 +26,9 @@ export const initState: AppState = {
   isUserDeleteModalOpen: false,
   isChatAddModalOpen: false,
   isChatDeleteModalOpen: false,
+  socket: null,
   chats: [],
+  messages: [],
 };
 
 window.store = new Store<AppState>(initState);
