@@ -24,7 +24,7 @@ class Block {
     FLOW_CWU: 'flow:component-will-unmount',
     FLOW_CDU: 'flow:component-did-update',
     FLOW_RENDER: 'flow:render',
-  };
+  } as const;
 
   constructor(propsWithChildren: Props = {}) {
     const { props, children } = this._getChildrenAndProps(propsWithChildren);

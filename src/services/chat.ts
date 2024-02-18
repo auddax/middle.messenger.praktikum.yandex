@@ -84,6 +84,8 @@ export const getChatToken = async (id: number): Promise<string | undefined> => {
 };
 
 export const initChat = async (chatId: number, userId: number | string) => {
+  window.store.getState().socket?.close();
+
   const token = await getChatToken(chatId);
   const socket = new WebSocket(`wss://ya-praktikum.tech/ws/chats/${userId}/${chatId}/${token}`);
 
@@ -92,17 +94,6 @@ export const initChat = async (chatId: number, userId: number | string) => {
       type: 'ping',
     }));
   }, 5000);
-
-  const handleSubmitMessage = (event: Event) => {
-    event.preventDefault();
-    const messageInputElement = document.getElementById('chatMessageInput') as HTMLInputElement;
-    const message = messageInputElement?.value;
-    socket.send(JSON.stringify({
-      content: message,
-      type: 'message',
-    }));
-    messageInputElement.value = '';
-  };
 
   const renderMessage = (data: SocketResponse) => {
     if (data.type !== 'message') return;
@@ -128,11 +119,6 @@ export const initChat = async (chatId: number, userId: number | string) => {
     console.log('Соединение установлено');
     window.store.set({ isOpenChat: true });
 
-    const buttonElement = document.getElementById('sendMessageButton');
-    const formElement = document.getElementById('messageForm');
-    buttonElement?.addEventListener('click', handleSubmitMessage);
-    formElement?.addEventListener('submit', handleSubmitMessage);
-
     socket.send(JSON.stringify({
       content: '0',
       type: 'get old',
@@ -145,7 +131,11 @@ export const initChat = async (chatId: number, userId: number | string) => {
     } else {
       console.log('Обрыв соединения');
     }
-    window.store.set({ isOpenChat: false });
+    window.store.set({
+      isOpenChat: false,
+      socket: null,
+      messages: [],
+    });
     console.log(`Код: ${event.code} | Причина: ${event.reason}`);
   });
 
@@ -167,4 +157,6 @@ export const initChat = async (chatId: number, userId: number | string) => {
   socket.addEventListener('error', (event) => {
     console.warn(event);
   });
+
+  window.store.set({ socket });
 };

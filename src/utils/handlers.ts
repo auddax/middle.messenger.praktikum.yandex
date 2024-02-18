@@ -1,8 +1,8 @@
 import { router } from 'src/router';
-import { RequestResult } from 'src/types';
+import { RequestResult, SocketResponse } from 'src/types';
 import { validateField } from './validateField';
 
-export const getFormData = (formId: string) => {
+export const getFormData = (formId: string, clearForm?:boolean) => {
   const formElement = document.getElementById(formId) as HTMLFormElement;
   if (!formElement) throw new Error('Form does not exists!');
   const formData = new FormData(formElement);
@@ -12,6 +12,7 @@ export const getFormData = (formId: string) => {
     return isValid;
   });
   if (!isFormValid) throw new Error('Form is not valid!');
+  if (clearForm) formElement.reset();
   return formProps;
 };
 
@@ -39,3 +40,10 @@ export const handleError = (response: RequestResult) => {
   window.store.set({ error: { code, message } });
   router.go('/error');
 };
+
+export const handleMessage = (data: SocketResponse, id: number) => ({
+  user_id: data.user_id,
+  time: data.time,
+  content: data.content,
+  class: data.user_id === id ? 'message_out' : 'message_in',
+});

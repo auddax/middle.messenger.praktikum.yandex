@@ -26,7 +26,9 @@ export type AppState = {
   isUserDeleteModalOpen: boolean;
   isChatAddModalOpen: boolean;
   isChatDeleteModalOpen: boolean,
-  chats: Chat[]
+  chats: Chat[],
+  messages: ChatMessage[],
+  socket: WebSocket | null,
 };
 
 export type User = {
@@ -49,6 +51,13 @@ type LastMessage = {
   user: User,
   time: string,
   content: string
+};
+
+type ChatMessage = {
+  user_id: number,
+  time: string,
+  content: string,
+  class: string,
 };
 
 export type Chat = {
