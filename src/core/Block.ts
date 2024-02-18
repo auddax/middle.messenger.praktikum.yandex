@@ -138,13 +138,7 @@ class Block {
 
   private _checkInDom() {
     const elementInDOM = document.body.contains(this._element);
-
-    if (elementInDOM) {
-      setTimeout(() => this._checkInDom(), 1000);
-      return;
-    }
-
-    this.eventBus.emit(Block.EVENTS.FLOW_CWU, this.props);
+    if (elementInDOM) this.eventBus.emit(Block.EVENTS.FLOW_CWU, this.props);
   }
 
   compile(template: string, context: { [key: string]: unknown }) {
@@ -176,7 +170,7 @@ class Block {
   getContent() {
     setTimeout(() => {
       this.dispatchComponentDidMount();
-    }, 100);
+    }, 10);
     return this.element;
   }
 
