@@ -1,19 +1,9 @@
 import { v4 as uuidv4 } from 'uuid';
 import Handlebars from 'handlebars';
-import EventBus from './EventBus';
-
-type Props = {
-  [key: string | symbol]: unknown | Block;
-  events?: Events;
-};
-
-type Child = { embed: (content: DocumentFragment) => void };
-
-type Events = { [key: string]: (() => void) | undefined };
-
-type Children = { [key: string]: Block };
-
-type Refs = { [key: string]: Element | Block };
+import EventBus from 'src/core/EventBus';
+import {
+  Props, Child, Children, Refs,
+} from 'src/types';
 
 class Block {
   protected props: Props;
@@ -31,9 +21,10 @@ class Block {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
+    FLOW_CWU: 'flow:component-will-unmount',
     FLOW_CDU: 'flow:component-did-update',
     FLOW_RENDER: 'flow:render',
-  };
+  } as const;
 
   constructor(propsWithChildren: Props = {}) {
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
@@ -87,6 +78,7 @@ class Block {
   private _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
+    eventBus.on(Block.EVENTS.FLOW_CWU, this._componentWillUnmount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
@@ -110,7 +102,7 @@ class Block {
   }
 
   private _render() {
-    const fragment = this.render();
+    const fragment = this.compile(this.render(), this.props);
     const newElement = fragment.firstElementChild as HTMLElement;
 
     this._removeEvents();
@@ -128,16 +120,22 @@ class Block {
   }
 
   private _componentDidMount() {
+    this._checkInDom();
     this.componentDidMount();
-
-    Object.values(this.children).forEach((child) => {
-      child.dispatchComponentDidMount();
-    });
   }
 
   private _componentDidUpdate() {
     const response = this.componentDidUpdate();
     if (response) this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
+  }
+
+  private _componentWillUnmount() {
+    this.componentWillUnmount();
+  }
+
+  private _checkInDom() {
+    const elementInDOM = document.body.contains(this._element);
+    if (elementInDOM) this.eventBus.emit(Block.EVENTS.FLOW_CWU, this.props);
   }
 
   compile(template: string, context: { [key: string]: unknown }) {
@@ -167,6 +165,9 @@ class Block {
   }
 
   getContent() {
+    setTimeout(() => {
+      this.dispatchComponentDidMount();
+    }, 100);
     return this.element;
   }
 
@@ -178,11 +179,13 @@ class Block {
     return true;
   }
 
-  render(): DocumentFragment {
-    return new DocumentFragment();
+  protected render(): string {
+    return '';
   }
 
   componentDidMount() {}
+
+  componentWillUnmount() {}
 
   setProps = (nextProps: { [key: string]: unknown }) => {
     if (!nextProps) {
@@ -198,15 +201,11 @@ class Block {
   }
 
   show() {
-    if (this._element) {
-      this._element.style.display = 'block';
-    }
+    this.getContent()!.style.display = 'flex';
   }
 
   hide() {
-    if (this._element) {
-      this._element.style.display = 'none';
-    }
+    this.getContent()!.style.display = 'none';
   }
 }
 

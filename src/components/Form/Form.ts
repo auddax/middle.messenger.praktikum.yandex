@@ -5,6 +5,7 @@ type FormProps = {
   formClassName: string;
   formId: string;
   onSubmit?: () => void;
+  onChange?: () => void;
 };
 
 class Form extends Block {
@@ -13,12 +14,13 @@ class Form extends Block {
       ...props,
       events: {
         submit: props.onSubmit,
+        change: props.onChange,
       },
     });
   }
 
-  render() {
-    return this.compile(template, this.props);
+  protected render() {
+    return template;
   }
 }
 

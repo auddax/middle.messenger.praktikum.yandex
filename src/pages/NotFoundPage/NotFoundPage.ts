@@ -1,9 +1,16 @@
 import Block from 'src/core/Block';
+import { router } from 'src/router';
 import template from './NotFoundPage.hbs?raw';
 
 class NotFoundPage extends Block {
-  render() {
-    return this.compile(template, this.props);
+  constructor() {
+    super({
+      goBack: () => router.back(),
+    });
+  }
+
+  protected render() {
+    return template;
   }
 }
 

@@ -1,0 +1,16 @@
+{{# Backdrop}}
+  {{# Modal modalClassName='chat-add__modal'}}
+    {{# Form formId='chatNameForm' formClassName='modal__form-controls' onSubmit=this.handleCreateChat}}
+      {{{ Input 
+        label='Название чата' 
+        className='modal__input' 
+        name='chat_name' 
+        id='chatNameInput' 
+        onFocusOut=this.focusOutHandler 
+      }}}
+      {{# Button type='primary' onClick=this.handleCreateChat }}
+        Создать
+      {{/Button}}
+    {{/Form}}
+  {{/Modal}}
+{{/Backdrop}}

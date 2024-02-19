@@ -1,9 +1,19 @@
 import Block from 'src/core/Block';
 import template from './Badge.hbs?raw';
 
+type BadgeProps = {
+  badgeText: string;
+};
+
 class Badge extends Block {
-  render() {
-    return this.compile(template, this.props);
+  constructor(props: BadgeProps) {
+    super({
+      ...props,
+    });
+  }
+
+  protected render() {
+    return template;
   }
 }
 

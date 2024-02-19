@@ -1,5 +1,7 @@
 import Block from 'src/core/Block';
-import { submitHandler } from 'src/utils/handlers';
+import { getFormData } from 'src/utils/handlers';
+import { router } from 'src/router';
+import { editUserPassword } from 'src/services/user';
 import template from './ProfileEditPassword.hbs?raw';
 
 const profileEditPassword = [
@@ -18,12 +20,32 @@ class ProfileEditPassword extends Block {
   constructor() {
     super({
       profileEditPassword,
-      submitHandler: () => submitHandler('profileEditPasswordForm'),
+      handleSubmitPassword: async () => {
+        const formProps = getFormData('profileEditPasswordForm');
+        if (formProps) {
+          const response = await editUserPassword(formProps);
+          if (response) {
+            window.store.set({ userInfo: response });
+            router.go('/settings');
+          }
+        }
+      },
+      currentUserName: null,
     });
   }
 
-  render() {
-    return this.compile(template, this.props);
+  componentDidMount() {
+    const { userInfo, avatarPath } = window.store.getState();
+    if (userInfo) {
+      this.setProps({
+        avatarPath,
+        currentUserName: userInfo.first_name,
+      });
+    }
+  }
+
+  protected render() {
+    return template;
   }
 }
 

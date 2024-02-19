@@ -1,9 +1,24 @@
 import Block from 'src/core/Block';
 import template from './Card.hbs?raw';
 
+export type CardProps = {
+  cardClassName: string;
+  key: string;
+  onClick?: () => void;
+};
+
 class Card extends Block {
-  render() {
-    return this.compile(template, this.props);
+  constructor(props: CardProps) {
+    super({
+      ...props,
+      events: {
+        click: props.onClick,
+      },
+    });
+  }
+
+  protected render() {
+    return template;
   }
 }
 

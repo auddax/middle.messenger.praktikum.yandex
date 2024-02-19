@@ -1,5 +1,7 @@
 import Block from 'src/core/Block';
-import { submitHandler, focusOutHandler } from 'src/utils/handlers';
+import { router } from 'src/router';
+import { login, setUser } from 'src/services/auth';
+import { focusOutHandler, getFormData } from 'src/utils/handlers';
 import template from './LoginCard.hbs?raw';
 
 const loginInputs = [
@@ -24,13 +26,34 @@ const loginInputs = [
 class LoginCard extends Block {
   constructor() {
     super({
+      userInfo: null,
       loginInputs,
-      submitHandler: () => submitHandler('loginForm'),
+      handleSubmit: async () => {
+        const formProps = getFormData('loginForm');
+        if (formProps) {
+          const response = await login(formProps);
+          if (response) router.go('/messenger');
+        }
+      },
     });
   }
 
-  render() {
-    return this.compile(template, this.props);
+  componentDidMount() {
+    this.checkAuth();
+  }
+
+  checkAuth = async () => {
+    const { userInfo } = window.store.getState();
+    if (!userInfo) {
+      const response = await setUser();
+      if (response) router.go('/messenger');
+      return;
+    }
+    router.go('/messenger');
+  };
+
+  protected render() {
+    return template;
   }
 }
 

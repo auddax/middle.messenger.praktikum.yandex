@@ -1,0 +1,50 @@
+.user-delete__modal {
+  align-items: center;
+
+  .modal__form-controls {
+    .modal__input {
+      width: 250px;
+    }
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    margin: 26px 0 0;
+
+    svg {
+      color: $color-green;
+      margin: 0 8px 0 0;
+      font-size: 1rem;
+    }
+  }
+
+  .modal__list {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    gap: 16px;
+
+    .modal__item {
+      font-size: 1rem;
+      display: flex;
+      margin: 26px 0 0;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+
+      svg {
+        font-size: 1rem;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .modal__add {
+    margin: 26px 0 0;
+  }
+}

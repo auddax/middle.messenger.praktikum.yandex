@@ -1,0 +1,32 @@
+.chats {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .chats__controls {
+    padding: 0 0 12px;
+    border-bottom: 1px solid $color-middle-gray;
+
+    .controls__nav {
+      display: flex;
+      justify-content: space-between;
+    }
+  
+    .button-link {
+      font-weight: 500;
+      font-size: 0.75rem;
+      color: $color-dark-gray; 
+      text-decoration: none;
+      margin: 0 0 24px;
+      display: block;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  .chats__list {
+    overflow-y: scroll;
+  }  
+}

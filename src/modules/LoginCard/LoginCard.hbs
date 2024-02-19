@@ -16,11 +16,13 @@
         }}}
       {{/each}}
     </div>
-    {{# Button type='primary' page='chatPage' onClick=this.submitHandler }}
+    {{# Button type='primary' page='chatPage' onClick=this.handleSubmit }}
       Войти
     {{/Button}}
   {{/Form}}
-  {{# Button type='link' page='signupPage'}}
-    Создать аккаунт
-  {{/Button}}
+  <a href='sign-up'>
+    {{# Button type='link' page='signupPage'}}
+      Создать аккаунт
+    {{/Button}}
+  </a>
 {{/Card}}

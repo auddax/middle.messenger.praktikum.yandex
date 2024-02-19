@@ -1,0 +1,15 @@
+{{# Backdrop}}
+  {{# Modal modalClassName='chat-delete__modal'}}
+    {{# Title level='4'}}
+      Вы точно хотите удалить чат?
+    {{/Title}}
+    <div class='modal__form-controls'>
+      {{# Button type='primary' onClick=this.handleCancel}}
+        Отмена
+      {{/Button}}
+      {{# Button type='primary' buttonClassName='red' onClick=this.handleDeleteChat}}
+        Удалить
+      {{/Button}}
+    </div>
+  {{/Modal}}
+{{/Backdrop}}

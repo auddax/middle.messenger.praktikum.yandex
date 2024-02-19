@@ -1,0 +1,45 @@
+.modal {
+  @include center-content;
+
+  padding: 2rem;
+  flex-direction: column;
+  border: 1px double #e5e5e5;
+  border-radius: 5px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $color-light-gray;
+  cursor: auto;
+
+  .modal__form-controls {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    
+    .form-row {
+      width: 100%;
+
+      .modal__input {
+        &.input {
+          width: 250px;
+          height: 40px;
+          text-align: center;
+          border-radius: 5px;
+          border: 1.5px solid $color-gray;
+        }
+      
+        &::placeholder {
+          font-size: 1rem;
+          font-family: $font-primary;
+          color: $color-gray;
+          text-align: center;
+        }
+      
+        &:focus::placeholder {
+          color: transparent;
+          transition: all $transition-time;
+        }
+      }
+    }
+  }
+}

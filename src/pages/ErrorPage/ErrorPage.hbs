@@ -1,11 +1,11 @@
 {{# Page className='page-error'}}
   {{# Title level='1'}}
-    500
+    {{ error.code }}
   {{/Title}}
   {{# Title level='3'}}
-    Мы уже фиксим
+    {{ error.message }}
   {{/Title}}
-  {{# Button type='link'}}
-    Назад к чатам
+  {{# Button type='link' onClick=this.goBack}}
+    Назад
   {{/Button}}
 {{/Page}}

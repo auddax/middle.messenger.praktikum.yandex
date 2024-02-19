@@ -1,41 +1,42 @@
 import Block from 'src/core/Block';
-import { submitHandler, focusOutHandler } from 'src/utils/handlers';
+import { Props } from 'src/types';
+import { router } from 'src/router';
+import { setUser } from 'src/services/auth';
+import { getChats } from 'src/services/chat';
 import template from './ChatPage.hbs?raw';
 
-const userCards = Array(10).fill({
-  avatarAltText: 'Иванов Иван',
-  avatarType: 'card-user',
-  level: '4',
-  userName: 'Иван',
-  userInitials: 'ИИ',
-  userCardText: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde quis commodi ipsa sapiente animi incidunt consectetur accusamus atque doloremque ex. Voluptatum magnam quibusdam vitae temporibus, ea aperiam recusandae autem consectetur...',
-  userCardDateTime: '12.00',
-  badgeText: '2',
-});
-
-const userMessages = [
-  {
-    userMessage: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia, totam sapiente non doloribus eveniet dicta ad vitae blanditiis natus eos officiis? Quae minima, perspiciatis nesciunt explicabo tempora quidem voluptas quisquam.',
-    messageClassName: 'message_in',
-  },
-  {
-    userMessage: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia, totam sapiente non doloribus eveniet dicta ad vitae blanditiis natus eos officiis? Quae minima, perspiciatis nesciunt explicabo tempora quidem voluptas quisquam.',
-    messageClassName: 'message_out',
-  },
-];
-
 class ChatPage extends Block {
-  constructor() {
+  constructor(props: Props) {
     super({
-      userCards,
-      userMessages,
-      focusOutHandler,
-      submitHandler: () => submitHandler('messageForm'),
+      ...props,
     });
   }
 
-  render() {
-    return this.compile(template, this.props);
+  componentDidMount() {
+    this.checkAuth();
+  }
+
+  checkAuth = async () => {
+    const { userInfo } = window.store.getState();
+    if (!userInfo) {
+      const response = await setUser();
+      if (response) {
+        this.loadChats();
+      } else {
+        router.go('/login');
+      }
+    } else {
+      await this.loadChats();
+    }
+  };
+
+  loadChats = async () => {
+    const { chats } = window.store.getState();
+    if (!chats?.length) await getChats();
+  };
+
+  protected render() {
+    return template;
   }
 }
 

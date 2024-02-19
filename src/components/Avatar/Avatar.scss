@@ -5,10 +5,16 @@
   border-radius: 100px;
   background-color: $color-middle-gray;
   font-weight: 300;
+  overflow: hidden;
 
-  &.avatar-card-user {
-    width: 47px;
-    height: 47px;
+  .avatar-text {
+    padding: 8px;
+    text-align: center;
+  }
+
+  &.avatar-chat-card {
+    width: 56px;
+    height: 56px;
   }
   
   &.avatar-card-profile {
