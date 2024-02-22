@@ -11,7 +11,7 @@
     "eslint": "eslint src --ext ts",
     "stylelint": "stylelint \"**/*.scss\"",
     "test": "mocha",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "lint-staged": {
     "*.scss": "npm run stylelint",
@@ -31,7 +31,7 @@
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.1.0",
     "eslint-plugin-import": "^2.29.1",
-    "husky": "^8.0.3",
+    "husky": "^9.0.11",
     "jsdom": "24.0.0",
     "jsdom-global": "3.0.2",
     "lint-staged": "^15.2.2",
