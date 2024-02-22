@@ -1,6 +1,6 @@
-import Block from 'src/core/Block';
-import renderDOM from 'src/utils/renderDOM';
-import { Props } from 'src/types';
+import Block from './Block';
+import renderDOM from '../utils/renderDOM';
+import { Props } from '../types';
 
 class Route {
   private _pathname: string;

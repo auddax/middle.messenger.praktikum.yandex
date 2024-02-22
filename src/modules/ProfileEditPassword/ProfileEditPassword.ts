@@ -1,8 +1,11 @@
-import Block from 'src/core/Block';
-import { getFormData } from 'src/utils/handlers';
-import { router } from 'src/router';
-import { editUserPassword } from 'src/services/user';
+import Block from '../../core/Block';
+import { getFormData } from '../../utils/handlers';
+import Router from '../../core/Router';
+import { ROOT_QUERY } from '../../../config';
+import { editUserPassword } from '../../services/user';
 import template from './ProfileEditPassword.hbs?raw';
+
+const router = new Router(ROOT_QUERY);
 
 const profileEditPassword = [
   {

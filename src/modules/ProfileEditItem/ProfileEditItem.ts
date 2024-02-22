@@ -1,5 +1,5 @@
-import Block from 'src/core/Block';
-import { focusOutHandler } from 'src/utils/handlers';
+import Block from '../../core/Block';
+import { focusOutHandler } from '../../utils/handlers';
 import template from './ProfileEditItem.hbs?raw';
 
 type ProfileEditItemProps = {

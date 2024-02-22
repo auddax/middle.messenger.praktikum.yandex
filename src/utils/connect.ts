@@ -1,7 +1,7 @@
-import Block from 'src/core/Block';
-import { StoreEvents } from 'src/core/Store';
-import { Props } from 'src/types';
-import isEqual from 'src/utils/isEqual';
+import Block from '../core/Block';
+import { StoreEvents } from '../core/Store';
+import { Props } from '../types';
+import isEqual from './isEqual';
 
 export function connect(Component: typeof Block) {
   return class extends Component {

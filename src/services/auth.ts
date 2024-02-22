@@ -1,6 +1,6 @@
-import AuthAPI from 'src/api/AuthAPI';
-import { RequestResult } from 'src/types';
-import { handleError } from 'src/utils/handlers';
+import AuthAPI from '../api/AuthAPI';
+import { RequestResult } from '../types';
+import { handleError } from '../utils/handlers';
 
 export const login = async (data: object) => {
   try {

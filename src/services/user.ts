@@ -1,6 +1,6 @@
-import UserAPI from 'src/api/UserAPI';
-import { RequestResult, UserResponse } from 'src/types';
-import { handleError } from 'src/utils/handlers';
+import UserAPI from '../api/UserAPI';
+import { RequestResult, UserResponse } from '../types';
+import { handleError } from '../utils/handlers';
 
 export const editUserProfile = async (data: object) => {
   let responseObj;

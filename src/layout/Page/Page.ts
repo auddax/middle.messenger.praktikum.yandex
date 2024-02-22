@@ -1,4 +1,4 @@
-import Block from 'src/core/Block';
+import Block from '../../core/Block';
 import template from './Page.hbs?raw';
 
 class Page extends Block {

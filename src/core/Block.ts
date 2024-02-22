@@ -1,9 +1,9 @@
 import { v4 as uuidv4 } from 'uuid';
 import Handlebars from 'handlebars';
-import EventBus from 'src/core/EventBus';
+import EventBus from './EventBus';
 import {
   Props, Child, Children, Refs,
-} from 'src/types';
+} from '../types';
 
 class Block {
   protected props: Props;
@@ -201,11 +201,15 @@ class Block {
   }
 
   show() {
-    this.getContent()!.style.display = 'flex';
+    if (this.element?.style) {
+      this.element.style.display = 'flex';
+    }
   }
 
   hide() {
-    this.getContent()!.style.display = 'none';
+    if (this.element?.style) {
+      this.element.style.display = 'none';
+    }
   }
 }
 
