@@ -1,5 +1,5 @@
-import Block from 'src/core/Block';
-import { Props } from 'src/types';
+import Block from '../../core/Block';
+import { Props } from '../../types';
 import template from './ChatMenu.hbs?raw';
 
 class ChatMenu extends Block {

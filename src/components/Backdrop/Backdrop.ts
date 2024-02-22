@@ -1,4 +1,4 @@
-import Block from 'src/core/Block';
+import Block from '../../core/Block';
 import template from './Backdrop.hbs?raw';
 
 class Backdrop extends Block {

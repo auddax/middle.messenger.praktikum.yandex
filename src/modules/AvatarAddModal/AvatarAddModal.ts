@@ -1,7 +1,6 @@
-import Block from 'src/core/Block';
-// import { getFormData } from 'src/utils/handlers';
-import { editUserAvatar } from 'src/services/user';
-import { setUser } from 'src/services/auth';
+import Block from '../../core/Block';
+import { editUserAvatar } from '../../services/user';
+import { setUser } from '../../services/auth';
 import template from './AvatarAddModal.hbs?raw';
 
 class AvatarAddModal extends Block {

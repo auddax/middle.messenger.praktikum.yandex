@@ -1,4 +1,4 @@
-import HTTPTransport from 'src/utils/HTTPTransport';
+import HTTPTransport from '../utils/HTTPTransport';
 
 const userApi = new HTTPTransport('/user');
 

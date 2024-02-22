@@ -1,7 +1,7 @@
-import Block from 'src/core/Block';
-import { focusOutHandler, getFormData } from 'src/utils/handlers';
-import { Props } from 'src/types';
-import { connect } from 'src/utils/connect';
+import Block from '../../core/Block';
+import { focusOutHandler, getFormData } from '../../utils/handlers';
+import { Props } from '../../types';
+import { connect } from '../../utils/connect';
 import template from './Chat.hbs?raw';
 
 const Chat = connect(class extends Block {

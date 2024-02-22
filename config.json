@@ -1,8 +1,0 @@
-{
-  "rootQuery": "app",
-  "baseUrl": "https://ya-praktikum.tech/api/v2",
-  "defaultHeaders": {
-    "Content-Type": "application/json",
-    "Accept": "application/json"
-  }
-}

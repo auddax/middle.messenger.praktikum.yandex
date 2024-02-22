@@ -1,8 +1,11 @@
-import Block from 'src/core/Block';
-import { createUser } from 'src/services/auth';
-import { router } from 'src/router';
-import { focusOutHandler, getFormData } from 'src/utils/handlers';
+import Block from '../../core/Block';
+import Router from '../../core/Router';
+import { ROOT_QUERY } from '../../../config';
+import { focusOutHandler, getFormData } from '../../utils/handlers';
 import template from './SignupCard.hbs?raw';
+import { createUser } from '../../services/auth';
+
+const router = new Router(ROOT_QUERY);
 
 const signupInputs = [
   {
@@ -74,6 +77,7 @@ class SignupCard extends Block {
           if (response) router.go('/login');
         }
       },
+      goLogin: () => router.go('/login'),
     });
   }
 

@@ -1,6 +1,9 @@
-import { router } from 'src/router';
-import { RequestResult, SocketResponse } from 'src/types';
+import Router from '../core/Router';
+import { ROOT_QUERY } from '../../config';
+import { RequestResult, SocketResponse } from '../types';
 import { validateField } from './validateField';
+
+const router = new Router(ROOT_QUERY);
 
 export const getFormData = (formId: string, clearForm?:boolean) => {
   const formElement = document.getElementById(formId) as HTMLFormElement;

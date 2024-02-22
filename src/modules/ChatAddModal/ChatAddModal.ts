@@ -1,7 +1,7 @@
-import Block from 'src/core/Block';
-import { focusOutHandler, getFormData } from 'src/utils/handlers';
-import { createChat, initChat } from 'src/services/chat';
-import { getCurrentChatName } from 'src/utils/helpers';
+import Block from '../../core/Block';
+import { focusOutHandler, getFormData } from '../../utils/handlers';
+import { createChat, initChat } from '../../services/chat';
+import { getCurrentChatName } from '../../utils/helpers';
 import template from './ChatAddModal.hbs?raw';
 
 class ChatAddModal extends Block {

@@ -1,7 +1,7 @@
-import ChatAPI from 'src/api/ChatAPI';
-import { RequestResult, ChatResponse, SocketResponse } from 'src/types';
-import { transformChatData } from 'src/modules/ChatsList/ChatsList';
-import { handleError } from 'src/utils/handlers';
+import ChatAPI from '../api/ChatAPI';
+import { RequestResult, ChatResponse, SocketResponse } from '../types';
+import { transformChatData } from '../utils/helpers';
+import { handleError } from '../utils/handlers';
 
 export const getChats = async () => {
   let responseObj;

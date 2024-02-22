@@ -1,7 +1,7 @@
-import Block from 'src/core/Block';
-import { CardProps } from 'src/components/Card/Card';
-import { initChat } from 'src/services/chat';
-import { getCurrentChatName } from 'src/utils/helpers';
+import Block from '../../core/Block';
+import { CardProps } from '../../components/Card/Card';
+import { initChat } from '../../services/chat';
+import { getCurrentChatName } from '../../utils/helpers';
 import template from './ChatCard.hbs?raw';
 
 class ChatCard extends Block {

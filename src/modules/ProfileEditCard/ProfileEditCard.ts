@@ -1,10 +1,13 @@
-import Block from 'src/core/Block';
-import { editUserProfile } from 'src/services/user';
-import { router } from 'src/router';
-import { getFormData } from 'src/utils/handlers';
-import { User } from 'src/types';
-import { connect } from 'src/utils/connect';
+import Block from '../../core/Block';
+import { editUserProfile } from '../../services/user';
+import Router from '../../core/Router';
+import { ROOT_QUERY } from '../../../config';
+import { getFormData } from '../../utils/handlers';
+import { User } from '../../types';
+import { connect } from '../../utils/connect';
 import template from './ProfileEditCard.hbs?raw';
+
+const router = new Router(ROOT_QUERY);
 
 type ProfileEditItem = {
   label: string;

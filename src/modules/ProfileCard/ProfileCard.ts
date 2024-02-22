@@ -1,9 +1,12 @@
-import Block from 'src/core/Block';
-import { router } from 'src/router';
-import { connect } from 'src/utils/connect';
-import { setUser } from 'src/services/auth';
-import { User } from 'src/types';
+import Block from '../../core/Block';
+import Router from '../../core/Router';
+import { ROOT_QUERY } from '../../../config';
+import { connect } from '../../utils/connect';
+import { setUser } from '../../services/auth';
+import { User } from '../../types';
 import template from './ProfileCard.hbs?raw';
+
+const router = new Router(ROOT_QUERY);
 
 type ProfileItem = {
   profileInfoTitle: string;
