@@ -1,6 +1,6 @@
-import Block from 'src/core/Block';
-import { Props } from 'src/types';
-import { connect } from 'src/utils/connect';
+import Block from '../../core/Block';
+import { Props } from '../../types';
+import { connect } from '../../utils/connect';
 import template from './ChatHeader.hbs?raw';
 
 const ChatHeader = connect(class extends Block {

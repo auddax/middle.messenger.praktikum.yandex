@@ -1,6 +1,9 @@
-import Block from 'src/core/Block';
-import { router } from 'src/router';
+import Block from '../../core/Block';
+import Router from '../../core/Router';
+import { ROOT_QUERY } from '../../../config';
 import template from './ProfilePage.hbs?raw';
+
+const router = new Router(ROOT_QUERY);
 
 class ProfilePage extends Block {
   constructor() {

@@ -1,8 +1,8 @@
-import Block from 'src/core/Block';
-import { focusOutHandler, getFormData } from 'src/utils/handlers';
-import { searchUser } from 'src/services/user';
-import { addUsersToChat } from 'src/services/chat';
-import { UserResponse } from 'src/types';
+import Block from '../../core/Block';
+import { focusOutHandler, getFormData } from '../../utils/handlers';
+import { searchUser } from '../../services/user';
+import { addUsersToChat } from '../../services/chat';
+import { UserResponse } from '../../types';
 import template from './UserAddModal.hbs?raw';
 
 class UserAddModal extends Block {

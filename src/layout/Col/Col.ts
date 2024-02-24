@@ -1,4 +1,4 @@
-import Block from 'src/core/Block';
+import Block from '../../core/Block';
 import template from './Col.hbs?raw';
 
 class Col extends Block {

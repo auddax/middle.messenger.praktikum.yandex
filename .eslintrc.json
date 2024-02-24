@@ -17,7 +17,7 @@
     "plugins": [
         "@typescript-eslint"
     ],
-    "ignorePatterns": ["vite.config.js"],
+    "ignorePatterns": ["vite.config.js", "loader-hbs.js", "mochaSetup.js"],
     "rules": {
         "import/prefer-default-export": "off",
         "no-underscore-dangle": "off",
@@ -26,6 +26,7 @@
         "class-methods-use-this": "off",
         "no-restricted-syntax": "off",
         "no-console": "off",
+        "@typescript-eslint/no-unused-expressions": "off",
         "@typescript-eslint/no-this-alias": "warn",
         "func-names": "warn",
         "no-param-reassign": "warn"

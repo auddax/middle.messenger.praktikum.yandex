@@ -1,6 +1,6 @@
-import Block from 'src/core/Block';
-import { deleteChat, getChats } from 'src/services/chat';
-import { Props } from 'src/types';
+import Block from '../../core/Block';
+import { deleteChat, getChats } from '../../services/chat';
+import { Props } from '../../types';
 import template from './ChatDeleteModal.hbs?raw';
 
 class ChatDeleteModal extends Block {

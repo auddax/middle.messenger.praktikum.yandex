@@ -1,6 +1,4 @@
-import config from '../../config.json';
-
-const { baseUrl, defaultHeaders } = config;
+import { BASE_URL, DEFAULT_HEADERS } from '../../config';
 
 interface MethodOptions {
   headers?: object,
@@ -34,7 +32,7 @@ class HTTPTransport {
   private apiUrl: string = '';
 
   constructor(path: string) {
-    this.apiUrl = `${baseUrl}${path}`;
+    this.apiUrl = `${BASE_URL}${path}`;
   }
 
   get: HTTPMethod = (url, options) => this.request(`${this.apiUrl}${url}`, { ...options, method: METHODS.GET });
@@ -49,7 +47,7 @@ class HTTPTransport {
     const {
       method, data, headers, timeout = 5000,
     } = options;
-    const requestHeaders = headers || defaultHeaders;
+    const requestHeaders = headers || DEFAULT_HEADERS;
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
